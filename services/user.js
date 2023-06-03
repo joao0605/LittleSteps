@@ -1,4 +1,5 @@
 import jwt from 'jsonwebtoken'
+const { getMongoCollection } = require("../src/database/db")
 
 
 //adicionar banco de dados aqui depois
@@ -35,17 +36,23 @@ export function cadastro(body) {
     return token
 }
 
-export function login(email, password) {
+export async function login(email, password) {
     //acessar colecao no banco de dados
-    const users = getMongoCollection("users")
-    const user = users.findOne({email: email})
-    if (!user) throw new Error("Usuário não encontrado")
-    if(user.password !== password) throw new Error("Senha incorreta")
-
-    //retorna o token criado
-    const token = createToken(body)
+    try {
+        const users = await getMongoCollection("teste")
+        console.log(users)
+        const user = await users.findOne({email: email})
+        if (!user) throw new Error("Usuário não encontrado")
+        if(user.password !== password) throw new Error("Senha incorreta")
+        
+    } catch (error) {
+        console.log(error)
+    }
+    const token = createToken({email, password})
 
     return token
+
+    //retorna o token criado
 
 }
 
