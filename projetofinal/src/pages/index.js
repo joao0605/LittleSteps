@@ -1,13 +1,32 @@
 import { getCookie } from 'cookies-next'
 import { verifica } from '../services/user'
+import { useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
 
 export default function Home() {
+
+  const router = useRouter();
+  const [loggedIn, setLoggedIn] = useState(false)
+  
+  useEffect(() => {
+    
+    setLoggedIn(Boolean(localStorage.getItem("token")))
+
+    // setInterval(() => {
+      
+    // }, 1000);
+  }, [])                                                     
+
+ 
+  
+  
 
   
   return (
 
     <div>
-      <p>Perfil do usuário</p>
+      { <p>Perfil do usuário</p>}
+      
 
     </div>
 
