@@ -8,7 +8,7 @@ import Logo from '../components/logoTitle/logoSecundario'
 import Title from '../components/logoTitle/title'
 import LoginCard from "@/components/loginCard/loginCard"
 import Input from '@/components/input/input'
-import Button from '@/components/button/button'
+import Button from '@/components/buttons/button'
 
 
 export default function LoginPage() {
@@ -68,7 +68,7 @@ export default function LoginPage() {
                         <Input type="text" placeholder="Seu e-mail" value={formData.email} required onChange={(e) => { handleFormEdit(e, 'email') }}></Input>
                         <Input type="password" placeholder="Sua senha" value={formData.password} required onChange={(e) => { handleFormEdit(e, 'password') }}></Input>
                         <Button>Entrar</Button>
-                    b 
+                
 
                         <Link href={"/cadastro"}>Ainda não possui conta?</Link>
                         {error && <p className={styles.error}>{error}</p>}
