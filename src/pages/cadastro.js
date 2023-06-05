@@ -6,7 +6,7 @@ import { useRouter } from 'next/router'
 
 import LoginCard from "@/components/loginCard/loginCard"
 import Input from '@/components/input/input'
-import Button from '@/components/button/button'
+import Button from '@/components/buttons/button'
 
 export default function Cadastro() {
     const [formData, setFormData] = useState({
