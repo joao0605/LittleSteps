@@ -8,7 +8,7 @@ import Logo from '../components/logoTitle/logoSecundario'
 import Title from '../components/logoTitle/title'
 import LoginCard from "@/components/loginCard/loginCard"
 import Input from '@/components/input/input'
-import Button from '@/components/button/button'
+import Button from '@/components/buttons/button'
 
 
 export default function LoginPage() {
