@@ -1,5 +1,5 @@
-import jwt from 'jsonwebtoken'
-const { getMongoCollection } = require("../src/database/db")
+/* import jwt from 'jsonwebtoken'
+const { getMongoCollection } = require("../database/db")
 
 
 //adicionar banco de dados aqui depois
@@ -61,3 +61,4 @@ export function verifica(token){
     return readToken(token)
 }
 
+*/
