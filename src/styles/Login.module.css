@@ -2,19 +2,20 @@
     background-color: #1fd9e4;
     min-height: 100vh;
     display: flex;
-    
+
     align-items: center;
     justify-content: center;
 }
 
 
 .form {
+    background-color: #F6F3F3;
     display: flex;
     flex-direction: column;
     gap: 10px;
 }
 
-.error{
+.error {
     color: red;
     font-weight: bold;
 }
