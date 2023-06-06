@@ -15,3 +15,25 @@ export default function formTest() {
         </div>
     )
 }
+
+export const getServerSideProps = async ({ req, res }) => {
+    try {
+      const token = getCookie('authorization', { req, res }); 
+      if (!token) {
+        throw new Error('Token Inválido');
+      }
+      authorize(token);
+  
+      return {
+        props: {}
+      };
+    } catch (err) {
+      return {
+        redirect: {
+          permanent: false,
+          destination: '/login'
+        },
+        props: {}
+      };
+    }
+  };
