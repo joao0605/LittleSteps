@@ -9,8 +9,9 @@ export default async function handler(req, res) {
     try {
         if(req.method === "POST") {
             
-            console.log(req.body)
+            console.log(req.body.password)
             const user = await getUserByEmail(req.body.email ?? "");
+            console.log(user)
             const isCorrect = await checkUserPassword(req.body.email ?? "", req.body.password ?? "")
             if (isCorrect) {
                 //create session
