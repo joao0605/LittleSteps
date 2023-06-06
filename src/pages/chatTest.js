@@ -1,15 +1,18 @@
 import NavButtonStudent from "@/components/navButton/navButtonStudent";
 import TopBar from "@/components/navButton/topBar";
-import PersonalDataStudent from "@/components/personalDataStudent/personalDataStudent";
+import Chat from "@/components/chat/chat";
 
-export default function personalDataStudebtTest() {
+export default function ChatTest() {
 
     //aqui vamos verificar se o perfil é do tipo pai ou responsável e enviar a resposta como props, para modificar o formulario
     return (
         <div>
-            <TopBar/>
-            <NavButtonStudent/>
-           <PersonalDataStudent/>
+            <TopBar />
+            <NavButtonStudent />
+            <div>
+                <h1>Chat App</h1>
+                <Chat />
+            </div>
         </div>
     )
 }

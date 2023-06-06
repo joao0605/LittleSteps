@@ -47,10 +47,7 @@ export default function Form() {
     // ideia de fazer a parte de cima do design como um banner
     return (
         <div>
-            <ButtonPersonalData />
-            <ButtonDailyReport />
-            <ButtonChat />
-            <ButtonStudents />
+            
             <ReportBox date={relatorio.date} name={relatorio.name} />
             <div>
                 <BreakfastBox />
