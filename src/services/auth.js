@@ -11,7 +11,8 @@ async function addUserAuth(data) {
 //Verificar se email e pass estão corretos
 async function checkUserPassword(email, password) {
     const user = await findUserAuthByEmail(email)
-    return (password === user.password) && !!user
+    console.log(user)
+    return !!user && (password === user.password) 
 }
 
 //Adicionar uma sessão

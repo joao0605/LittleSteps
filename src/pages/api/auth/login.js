@@ -8,7 +8,7 @@ export default async function handler(req, res) {
 
     try {
         if(req.method === "POST") {
-            
+            console.log(req.body)
             const user = await getUserByEmail(req.body.email ?? "");
            
             const isCorrect = await checkUserPassword(req.body.email ?? "", req.body.password ?? "")
