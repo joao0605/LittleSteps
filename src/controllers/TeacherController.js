@@ -1,12 +1,15 @@
+import { ObjectId } from 'mongodb';
 import connectDB from '../database/db-mongoose'
-import UserTeacher from "../models/UserTeacher.js";
+import { getMongooseUserTeacherModel } from "../models/UserTeacher.js";
+
+// export const UserT = mongoose.models.UserTeacher || mongoose.model('UserTeacher', user)
 
 // Cria um novo user já com os dados
 async function newTeacherUser(req, res) {
     connectDB()
     try {
         const userData = req.body;
-        const newUser = await UserTeacher.create(userData)
+        const newUser = await UserT.create(userData)
 
         return res.status(200).json(newUser);
     } catch (error) {
@@ -38,15 +41,26 @@ async function deleteTeacherUsers(req, res) {
     }
 }
 
-// Obtém todos os formulários
-async function getTeacherUsers(req, res) {
-    connectDB()
+// Obtém o user do professor
+async function getTeacherUsersById(id) {
+    connectDB();
     try {
-        const users = await UserTeacher.find().exec();
-        res.status(200).json(users);
+        // const id = req.params.id;´
+        const model = getMongooseUserTeacherModel()
+        const user = await model.findById({ _id: new ObjectId(id) });
+        return user
+        // if (!user) {
+        //     return res.status(404).json({ error: 'Usuário não encontrado' });
+        // }
+        // return res.status(200).json(user);
+
+
+
     } catch (error) {
-        res.status(500).json({ error: error.message })
+        // return res.status(500).json({ error: 'Erro ao buscar usuário', details: error.message });
+        console.log(error)
     }
+
 }
 
-export {newTeacherUser, newTeacherUsers, deleteTeacherUsers, getTeacherUsers}
+export { newTeacherUser, newTeacherUsers, deleteTeacherUsers, getTeacherUsersById }
