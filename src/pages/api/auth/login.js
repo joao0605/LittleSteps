@@ -9,13 +9,15 @@ export default async function handler(req, res) {
     try {
         if(req.method === "POST") {
             
-            console.log(req.body.password)
             const user = await getUserByEmail(req.body.email ?? "");
-            console.log(user)
+           
             const isCorrect = await checkUserPassword(req.body.email ?? "", req.body.password ?? "")
+            
             if (isCorrect) {
                 //create session
+                
                 const token = await createUserSession({userId: user._id})
+                console.log(token.insertedId)
                 return res.status(200).json({ token: token.insertedId })
             }
         }

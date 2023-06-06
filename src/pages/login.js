@@ -24,12 +24,15 @@ export default function LoginPage() {
             },
             body: JSON.stringify(state)
         })
+        
 
+        
         if (res.status === 200) {
             const corpo = await res.json()
             //localStorage.setItem("token", corpo.token)
-            setCookie('authorization', corpo.token)
+            setCookie('authorization', corpo)
             router.push("/formTest")
+
         } else {
             setError("Usuário ou senha incorretos")
         };

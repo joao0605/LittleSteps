@@ -2,7 +2,7 @@ const { MongoClient } = require('mongodb')
 
 
 const URL = process.env.MONGODB_URI ?? "mongodb://127.0.0.1:27017"
-const DB_NAME = "littleSteps"
+const DB_NAME = "test"
 
 let client
 async function connectToMongo() {
