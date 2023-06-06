@@ -2,22 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
- 
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    
-  }
-}
-
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  --header: #4FA8DA;
+  --profile: #F9E63F;
+  --report: #FA6A9E;
+  ;
+  --chat: #56E787;
+  --records: #CF81CF;
+  --class: #CF81CF;
+  --buttonMargin: 7vw;
 }

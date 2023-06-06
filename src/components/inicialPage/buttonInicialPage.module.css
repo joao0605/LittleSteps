@@ -1,0 +1,53 @@
+.iconDailyReport {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   border-radius: 100%;
+   width: 90px;
+   height: 90px;
+   background-color: #FA6A9E;
+}
+
+.iconPersonalData {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   border-radius: 100%;
+   width: 90px;
+   height: 90px;
+   background-color:  #F9E63F;
+}
+
+.iconChat {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   border-radius: 100%;
+   width: 90px;
+   height: 90px;
+   background-color:  #56E787;
+}
+
+.iconclasse {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   border-radius: 100%;
+   width: 90px;
+   height: 90px;
+   background-color: #CF81CF;
+}
+.iconrecord {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   border-radius: 100%;
+   width: 90px;
+   height: 90px;
+   background-color: #CF81CF;
+}
+
+.slider {
+   display: flex;
+   flex-direction: row;
+}

@@ -20,7 +20,7 @@ export default function PersonalDataTeacher() {
         addInfo: "Alergica a crianças"
     }
 
-    // Falta a Nav bar e o banner
+  
 
     return (
         <div>

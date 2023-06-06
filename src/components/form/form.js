@@ -1,7 +1,3 @@
-import ButtonPersonalData from "./buttonPersonalData";
-import ButtonDailyReport from "./buttonDailyReport";
-import ButtonChat from "./buttonChat";
-import ButtonStudents from "./buttonStudents";
 import BathroomBox from "./bathroomBox";
 import ReportBox from "./reportBox";
 import BreakfastBox from "./breakfastBox";
@@ -9,6 +5,7 @@ import LunchBox from "./lunchBox";
 import SleepBox from "./sleepBox";
 import CommentBox from "./commentBox";
 import { useState } from "react";
+
 
 
 
@@ -43,14 +40,9 @@ export default function Form() {
         name: "Joao",
         date: "05/06/23"
     }
-    //falta NAV bar que ira substituir os botões
-    // ideia de fazer a parte de cima do design como um banner
+   
     return (
-        <div>
-            <ButtonPersonalData />
-            <ButtonDailyReport />
-            <ButtonChat />
-            <ButtonStudents />
+        <div>          
             <ReportBox date={relatorio.date} name={relatorio.name} />
             <div>
                 <BreakfastBox />
@@ -65,7 +57,7 @@ export default function Form() {
                 <SleepBox />
             </div>
             <CommentBox />
-          
+
 
         </div>
     )
