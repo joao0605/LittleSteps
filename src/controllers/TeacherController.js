@@ -1,7 +1,9 @@
+import connectDB from '../database/db-mongoose'
 import UserTeacher from "../models/UserTeacher.js";
 
 // Cria um novo user já com os dados
 async function newTeacherUser(req, res) {
+    connectDB()
     try {
         const userData = req.body;
         const newUser = await UserTeacher.create(userData)
@@ -13,6 +15,7 @@ async function newTeacherUser(req, res) {
 }
 // Cria vários users já com os dados
 async function newTeacherUsers(req, res) {
+    connectDB()
     try {
         const userData = req.body;
         const newUser = await UserTeacher.insertMany(userData)
@@ -25,6 +28,7 @@ async function newTeacherUsers(req, res) {
 
 // Apaga todos os formulários
 async function deleteTeacherUsers(req, res) {
+    connectDB()
     try {
         const del = await UserTeacher.deleteMany();
 
@@ -36,6 +40,7 @@ async function deleteTeacherUsers(req, res) {
 
 // Obtém todos os formulários
 async function getTeacherUsers(req, res) {
+    connectDB()
     try {
         const users = await UserTeacher.find().exec();
         res.status(200).json(users);
