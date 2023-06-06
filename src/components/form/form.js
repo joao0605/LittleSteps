@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+import RangeSlider from "./rangeSlider";
+
+export default function Form(){
+=======
 import ButtonPersonalData from "./buttonPersonalData";
 import ButtonDailyReport from "./buttonDailyReport";
 import ButtonChat from "./buttonChat";
@@ -66,7 +71,15 @@ export default function Form() {
             </div>
             <CommentBox />
           
+>>>>>>> 7abcc80fb6517036a53412fc65a1c50b8ec9bb41
 
+    return(
+        <div>
+            <RangeSlider/>
+            <RangeSlider/>
+            <RangeSlider/>
+            <RangeSlider/>
+            <RangeSlider/>
         </div>
     )
-}//  <button onClick={handleClick() }></button>
+}
