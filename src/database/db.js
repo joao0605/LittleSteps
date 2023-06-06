@@ -1,14 +1,15 @@
 const { MongoClient } = require('mongodb')
 
 
-const URL = process.env.MONGO_URL ?? "mongodb://127.0.0.1:27017"
-const DB_NAME = "local"
+const URL = process.env.MONGODB_URI ?? "mongodb://127.0.0.1:27017"
+const DB_NAME = "test"
 
 let client
 async function connectToMongo() {
     try {
         if (!client) {
             client = await MongoClient.connect(URL)
+            console.log("conectado ao banco de dados")
         }
         return client;
     } catch (err) {
