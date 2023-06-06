@@ -26,11 +26,11 @@ export default function LoginPage() {
         })
         
 
-        
         if (res.status === 200) {
             const corpo = await res.json()
-            //localStorage.setItem("token", corpo.token)
-            setCookie('authorization', corpo)
+            console.log(corpo)
+            localStorage.setItem("token", corpo.token)
+            // setCookie('authorization', corpo)
             router.push("/formTest")
 
         } else {
