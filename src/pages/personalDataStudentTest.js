@@ -1,20 +1,23 @@
 import NavButtonStudent from "@/components/navButton/navButtonStudent";
 import TopBar from "@/components/navButton/topBar";
 import PersonalDataStudent from "@/components/personalDataStudent/personalDataStudent";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function personalDataStudentTest() {
 
-    const [data, setData] = useState(null);
+    const [dados, setDados] = useState(null);
 
   useEffect(() => {
+    
     async function fetchData() {
-      const response = await fetch('');
-      const data = await response.json();
-      setData(data);
+      const res = await fetch('/api/manager/studentUser', {method: "GET"})
+      const data = await res.json();
+      setDados(data);
+      console.log(data)
     }
 
     fetchData();
+    
   }, []);
     
 
@@ -24,6 +27,8 @@ export default function personalDataStudentTest() {
             <TopBar/>
             <NavButtonStudent/>
            <PersonalDataStudent/>
+           
+           
         </div>
     )
 }

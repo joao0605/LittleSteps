@@ -1,6 +1,9 @@
-import connectDB from '../database/db-mongoose'
-import UserStudent from "../models/UserStudent.js";
-import Form from "../models/Form.js";
+
+import getMongoCollection from '../database/db'
+import { getMongooseUserStudentModel } from "../models/UserStudent.js";
+import { getMongooseFormModel } from "../models/Form.js";
+
+
 
 // Cria um novo user já com os dados
 async function newStudentUser(req, res) {
@@ -43,7 +46,10 @@ async function deleteStudentUsers(req, res) {
 async function getStudentUsers(req, res) {
     connectDB()
     try {
-        const users = await UserStudent.find().exec();
+        const collection = await getMongoCollection(collectionName)
+
+        const users = await collection.findOne({ email: email })
+
         res.status(200).json(users);
     } catch (error) {
         res.status(500).json({ error: error.message })
@@ -54,21 +60,21 @@ async function getStudentUsers(req, res) {
 async function getDailyForm(req, res) {
     connectDB()
     const { date, studentId } = req.params;
-  
+
     try {
-      const studentForm = await Form.findById(studentId);
-      const dailyForm = studentForm.find((form) => form.date === date);
-  
-      if (!dailyForm) {
-        return res.status(404).json({ error: 'Formulário do aluno não encontrado' });
-      }
-  
-      res.status(200).json(dailyForm);
+        const studentForm = await Form.findById(studentId);
+        const dailyForm = studentForm.find((form) => form.date === date);
+
+        if (!dailyForm) {
+            return res.status(404).json({ error: 'Formulário do aluno não encontrado' });
+        }
+
+        res.status(200).json(dailyForm);
     } catch (error) {
-      res.status(500).json({ error: error.message });
+        res.status(500).json({ error: error.message });
     }
-  }
-  
+}
+
 
 
 

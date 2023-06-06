@@ -1,5 +1,5 @@
 import connectDB from '../database/db-mongoose'
-import Form from '../models/Form.js';
+import {getMongooseFormModel} from '../models/Form.js';
 
 // Cria um novo formulário já com os dados
 async function newForm(req, res) {
