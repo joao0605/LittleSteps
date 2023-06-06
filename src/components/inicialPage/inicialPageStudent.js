@@ -3,8 +3,9 @@ import ButtonDailyReport from "./buttonDailyReport"
 import ButtonPersonalData from "./buttonPersonalData"
 import ButtonRecord from "./buttonRecord"
 import styles from "./buttonInicialPage.module.css"
+import Image from "next/image"
+import logosecundario from '../../../public/logotipoSecundario.svg'
 
-//colocar imagem "Mãe e Filho" dentro da div e depois posicionar na parte inferior esquerda da tela no CSS
 
 export default function InicialPageStudent() {
 
@@ -18,6 +19,9 @@ export default function InicialPageStudent() {
             <div className={styles.slider}>
                 <div><ButtonChat /></div>
                 <div><ButtonRecord /></div>
+            </div>
+            <div className={styles.logosecundario}> <Image
+            src={logosecundario}/>
             </div>
 
 

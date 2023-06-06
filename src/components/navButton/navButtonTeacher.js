@@ -6,6 +6,8 @@ import classe from '../../../public/classe.png'
 import styles from './navBar.module.css'
 import { useRouter } from "next/router"
 
+// criar rota para o chat e o classe
+
 export default function NavButtonTeacher() {
     const router = useRouter()
 
@@ -17,16 +19,16 @@ export default function NavButtonTeacher() {
                     src={profile} />
             </button>
 
-            <button className={styles.report}>
+            <button onClick={() => router.push('/formTest')} className={styles.report}>
                 <Image
                     src={report} />
             </button>
 
-            <button className={styles.chat}>
+            <button onClick={() => router.push('/')} className={styles.chat}>
                 <Image src={chat} />
             </button>
 
-            <button className={styles.classe}>
+            <button onClick={() => router.push('/')} className={styles.classe}>
                 <Image src={classe} />
             </button>
 
