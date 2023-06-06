@@ -1,10 +1,12 @@
 const { ObjectId } = require("mongodb")
 const { getMongoCollection } = require("./db")
 
-const collectionName = "teachers"
+const collectionName = "userstudents"
 
 async function findUserAuthByEmail(email) {
+    
     const collection = await getMongoCollection(collectionName)
+  
     return collection.findOne({ email: email })
 }
 async function findUserAuth(uid) {

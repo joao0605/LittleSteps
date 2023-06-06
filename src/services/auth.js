@@ -29,7 +29,9 @@ async function validateSession(token) {
 
 //Encontra o utilizador pelo email
 async function getUserByEmail(email) {
+    
     const result = await findUserAuthByEmail(email)
+    
     return result
 }
 //Encontra o utilizador pelo id

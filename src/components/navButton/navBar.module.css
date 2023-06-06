@@ -1,0 +1,90 @@
+.navbar {
+    background-color: var(--header);
+    height: 10vh;
+    width: 110%;
+    margin: -10px;
+
+    position: relative;
+}
+
+.logotext {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-48%, -15%);
+    height: 350px;
+
+
+}
+
+.navButtons {
+    margin-top: 5%;
+    margin-left: 3%;
+    margin-right: 3%;
+}
+
+
+.profile {
+    margin-right: var(--buttonMargin);
+
+
+    border-radius: 50%;
+    background-color: var(--profile);
+    width: 56px;
+    height: 56px;
+    left: 24px;
+    top: 111px;
+
+}
+
+
+.report {
+    margin-right: var(--buttonMargin);
+
+    border-radius: 50%;
+    background-color: var(--report);
+
+    text-align: center;
+
+    width: 70px;
+    height: 70px;
+}
+
+
+.chat {
+    margin-right: var(--buttonMargin);
+
+    border-radius: 50%;
+    background-color: var(--chat);
+
+    text-align: center;
+
+    width: 70px;
+    height: 70px;
+}
+
+
+.record {
+    border-radius: 50%;
+    background-color: var(--records);
+
+    text-align: center;
+
+    width: 70px;
+    height: 70px;
+}
+
+.classe {
+    border-radius: 50%;
+    background-color: var(--records);
+
+    text-align: center;
+
+    width: 70px;
+    height: 70px;
+}
+
+.iconeProfile {
+    height: 100px;
+    width: 100px;
+}
