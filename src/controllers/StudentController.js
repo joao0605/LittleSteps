@@ -1,8 +1,10 @@
+import connectDB from '../database/db-mongoose'
 import UserStudent from "../models/UserStudent.js";
 import Form from "../models/Form.js";
 
 // Cria um novo user já com os dados
 async function newStudentUser(req, res) {
+    connectDB()
     try {
         const userData = req.body;
         const newUser = await UserStudent.create(userData)
@@ -14,6 +16,7 @@ async function newStudentUser(req, res) {
 }
 // Cria vários users já com os dados
 async function newStudentUsers(req, res) {
+    connectDB()
     try {
         const userData = req.body;
         const newUser = await UserStudent.insertMany(userData)
@@ -26,6 +29,7 @@ async function newStudentUsers(req, res) {
 
 // Apaga todos os formulários
 async function deleteStudentUsers(req, res) {
+    connectDB()
     try {
         const del = await UserStudent.deleteMany();
 
@@ -37,6 +41,7 @@ async function deleteStudentUsers(req, res) {
 
 // Obtém todos os formulários
 async function getStudentUsers(req, res) {
+    connectDB()
     try {
         const users = await UserStudent.find().exec();
         res.status(200).json(users);
@@ -47,6 +52,7 @@ async function getStudentUsers(req, res) {
 
 // Obtém o formulário do dia do aluno
 async function getDailyForm(req, res) {
+    connectDB()
     const { date, studentId } = req.params;
   
     try {

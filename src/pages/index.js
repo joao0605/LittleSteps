@@ -7,6 +7,14 @@ import {authorize} from '../services/permission'
 export default function Home() {
 
   const router = useRouter();
+
+  useEffect(() => {
+      const logged = Boolean(localStorage.getItem('token'))
+      if (!logged) {
+          router.push('/login')
+      }
+  }, [])
+  
  /* const [loggedIn, setLoggedIn] = useState(false)
   
   useEffect(() => {

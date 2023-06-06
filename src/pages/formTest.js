@@ -15,6 +15,8 @@ export default function formTest() {
             router.push('/login')
         }
     }, [])
+
+    
     
     //aqui vamos verificar se o perfil é do tipo pai ou responsável e enviar a resposta como props, para modificar o formulario
     return (
