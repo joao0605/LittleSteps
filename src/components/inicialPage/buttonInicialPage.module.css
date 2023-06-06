@@ -48,6 +48,16 @@
 }
 
 .slider {
+   
    display: flex;
    flex-direction: row;
+}
+
+.logosecundario{
+
+width: 250px;
+height: 250px;
+left: -4px;
+top: 676px;
+transform: translate(-10%, 180%);
 }
