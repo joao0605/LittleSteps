@@ -1,7 +1,9 @@
 
 import getMongoCollection from '../database/db'
-import {getMongooseUserStudentModel} from "../models/UserStudent.js";
-import {getMongooseFormModel} from "../models/Form.js";
+import { getMongooseUserStudentModel } from '@/models/User';
+import { getMongooseFormModel } from "../models/Form.js";
+import { ObjectId } from 'mongodb';
+import connectDB from '@/database/db-mongoose';
 
 
 
@@ -12,7 +14,7 @@ async function newStudentUser(req, res) {
         const userData = req.body;
         const newUser = await UserStudent.create(userData)
 
-        return res.status(200).json(userData);
+        return res.status(200).json(newUser);
     } catch (error) {
         return res.status(500).json({ error: error.message });
     }
@@ -44,9 +46,9 @@ async function deleteStudentUsers(req, res) {
 
 // Obtém todos os formulários
 async function getStudentUsers(req, res) {
-   connectDB()
+    connectDB()
     try {
-const collection = await getMongoCollection(collectionName)
+        const collection = await getMongoCollection(collectionName)
 
         const users = await collection.findOne({ email: email })
 
@@ -58,24 +60,40 @@ const collection = await getMongoCollection(collectionName)
 
 // Obtém o formulário do dia do aluno
 async function getDailyForm(req, res) {
-    connectDB()
-    const { date, studentId } = req.params;
-  
+    connectDB();
+        
     try {
-      const studentForm = await Form.findById(studentId);
-      const dailyForm = studentForm.find((form) => form.date === date);
-  
-      if (!dailyForm) {
-        return res.status(404).json({ error: 'Formulário do aluno não encontrado' });
-      }
-  
-      res.status(200).json(dailyForm);
+        const student = getMongooseFormModel()
+        const id = req.query.id
+        const date = req.query.date
+       // console.log(newDate)
+
+       //const date = newDate.valueOf()
+       // console.log(date)
+
+        const findStudents = student.find({studentId: id})
+        const daily = await findStudents.find({date: date})
+        res.status(200).json(daily)
     } catch (error) {
-      res.status(500).json({ error: error.message });
+        res.status(500).json({ error: error.message });
     }
-  }
-  
+}
+ 
+async function updateStudentData(id) {
+    connectDB()
+    try {
+        const model = getMongooseUserStudentModel()
+        const updatedUser = await model.findByIdAndUpdate({ _id: new ObjectId(id) }, req.body, {
+            new: true,
+          }).exec();
+    
+        return updatedUser;
+    } catch (error) {
+        console.log(error)
+    }
+}
 
 
 
-export { newStudentUser, newStudentUsers, deleteStudentUsers, getStudentUsers, getDailyForm }
+
+export { newStudentUser, newStudentUsers, deleteStudentUsers, getStudentUsers, getDailyForm, updateStudentData }

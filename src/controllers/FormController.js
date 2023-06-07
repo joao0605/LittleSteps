@@ -19,7 +19,7 @@ async function newForms(req, res) {
     connectDB()
     try {
         const formData = req.body;
-        const newForm = await Form.insertMany(formData)
+        const newForm = await getMongooseFormModel().insertMany(formData)
 
         return res.status(200).json(newForm);
     } catch (error) {
@@ -43,20 +43,21 @@ async function deleteForms(req, res) {
 async function getForms(req, res) {
     connectDB()
     try {
-        const Form = getMongooseFormModel()
+        const Form = getMongooseFormModel();
         const forms = await Form.find().exec();
-        return res.json(forms);
+        res.json(forms);
     } catch (error) {
-        return res.status(500).json({ error: error.message })
+        res.status(500).json({ error: error.message })
     }
 }
 
 // Atualiza o formulário
 async function updateForm(req, res) {
-    connectDB()
+    connectDB();
     try {
-      const { _id } = req.params;
-      const updatedForm = await Form.findByIdAndUpdate(_id, req.body, {
+        const Form = getMongooseFormModel();
+      const id = req.query.id;
+      const updatedForm = await Form.findByIdAndUpdate({ _id: new ObjectId(id) }, req.body, {
         new: true,
       }).exec();
   

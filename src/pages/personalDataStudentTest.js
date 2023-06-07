@@ -28,7 +28,7 @@ export default function personalDataStudentTest() {
             <NavButtonStudent/>
            <PersonalDataStudent/>
            
-          {dados && dados.map(ele => <p>{ele.observations}</p>)}
+          {dados && dados.filter(form => form.courseId === "primario").map(form => <p>{form.observations}</p>)}
         </div>
     )
 }

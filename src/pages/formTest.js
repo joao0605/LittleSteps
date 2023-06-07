@@ -1,5 +1,6 @@
 import BigMenuButton from "@/components/buttons/bigMenuButton";
 import Form from "@/components/form/form";
+import NavButtonStudent from "@/components/navButton/navButtonStudent";
 import NavButton from "@/components/navButton/navButtonStudent";
 import TopBar from "@/components/navButton/topBar";
 import { useRouter } from "next/router";
@@ -39,7 +40,7 @@ export default function formTest() {
     return (
         <div>
             <TopBar/>
-            <NavButton/>
+            <NavButtonStudent/>
             
         {dadosForm && dadosForm.map(form => <div>{<Form edit={true} name={form.studentId} breakfast={form.breakfast} lunch={form.lunch} pee={form.pee} poop={form.poop} nap={form.nap} observations={form.observations}/>}</div>)}
           

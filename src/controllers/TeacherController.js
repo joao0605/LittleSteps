@@ -17,14 +17,24 @@ async function newTeacherUser(req, res) {
 // Cria vários users já com os dados
 async function newTeacherUsers(req, res) {
     connectDB()
-    try {
+   /* try {
         const userData = req.body;
         const newUser = await UserTeacher.insertMany(userData)
 
         return res.status(200).json(newUser);
     } catch (error) {
         return res.status(500).json({ error: error.message });
+    }*/
+
+    try{
+        const UserTeacher = getMongooseUserTeacherModel()
+        const newUser = await UserTeacher.insertMany(userData)
+        return newUser
+    } catch (error) {
+        console.log(error)
     }
+    
+
 }
 
 // Apaga todos os formulários
@@ -51,4 +61,18 @@ async function getTeacherUsersById(id) {
     }
 }
 
-export { newTeacherUser, newTeacherUsers, deleteTeacherUsers, getTeacherUsersById }
+async function updateTeachersData(id) {
+    connectDB()
+    try {
+        const model = getMongooseUserTeacherModel()
+        const updatedUser = await model.findByIdAndUpdate({ _id: new ObjectId(id) }, req.body, {
+            new: true,
+          }).exec();
+    
+        return updatedUser;
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export { newTeacherUser, newTeacherUsers, deleteTeacherUsers, getTeacherUsersById, updateTeachersData }
