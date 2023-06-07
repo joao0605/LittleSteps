@@ -1,6 +1,7 @@
 import StudentInfo from "./studentInfo"
 import ResponsibleInfo from "./responsibleInfo"
 import AddInfo from "./addInfo"
+import styles from './StudentInfo.module.css'
 
 export default function PersonalDataStudent() {
 
@@ -18,17 +19,17 @@ export default function PersonalDataStudent() {
         addInfo: "As sextas quem busca é a Avó Jo"
     }
 
-// Falta a Nav bar e o banner
+
 
     return (
-        <div>
-            <div>
+        <div className={styles.studentAll}>
+            <div className={styles.studentInfo}>
                 <StudentInfo name={estudante.name} birthday={estudante.date} />
             </div>
-            <div>
+            <div className={styles.responsibleInfo}>
                 <ResponsibleInfo name={responsavel.name} phoneNumber={responsavel.phone} email={responsavel.email} address={responsavel.address} />
             </div>
-            <div>
+            <div className={styles.observacoesInfo}>
                 <AddInfo addInfo={add.addInfo}/>
             </div>
 
