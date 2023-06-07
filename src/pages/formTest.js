@@ -18,11 +18,13 @@ export default function formTest() {
     }, [])
 
     const [dadosForm, setDadosForm] = useState(null);
+    const data = new Date()
+    const formatedDate = `${data.getFullYear()}-${data.getMonth()}-${data.getDate()}`
 
   useEffect(() => {
     
     async function fetchData() {
-      const res = await fetch('/api/manager/forms', {method: "GET"})
+      const res = await fetch(`/api/manager/forms/647ec872b2375619cca31e98/${formatedDate}`, {method: "GET"})
       if(res.status != 200 ){
         router.push('/login')
       }

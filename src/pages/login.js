@@ -1,8 +1,9 @@
 import Link from 'next/link'
-import { setCookie } from 'cookies-next'
+
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 import styles from '../styles/login.module.css'
+
 
 import Logo from '../components/logoTitle/logoSecundario'
 import Title from '../components/logoTitle/title'
@@ -28,10 +29,16 @@ export default function LoginPage() {
 
         if (res.status === 200) {
             const corpo = await res.json()
-            console.log(corpo)
             localStorage.setItem("token", corpo.token)
             // setCookie('authorization', corpo)
-            router.push("/formTest")
+           if(corpo.userType  === "userteachers"){
+
+               router.push("/formTeacher")
+
+           } else if( corpo.userType === "userstudents"){
+
+               router.push("/formTest")
+           }
 
         } else {
             setError("Usuário ou senha incorretos")

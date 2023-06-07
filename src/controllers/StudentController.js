@@ -1,6 +1,6 @@
 
 import getMongoCollection from '../database/db'
-import { getMongooseUserStudentModel } from '@/models/User';
+import { getMongooseUserStudentModel } from '@/models/UserStudent';
 import { getMongooseFormModel } from "../models/Form.js";
 import { ObjectId } from 'mongodb';
 import connectDB from '@/database/db-mongoose';
@@ -64,15 +64,21 @@ async function getDailyForm(req, res) {
         
     try {
         const student = getMongooseFormModel()
-        const id = req.query.id
+        const id = req.query.studentId
         const date = req.query.date
        // console.log(newDate)
 
        //const date = newDate.valueOf()
-       // console.log(date)
+        console.log(date)
+        console.log(id)
 
-        const findStudents = student.find({studentId: id})
-        const daily = await findStudents.find({date: date})
+        const findDaily = await student.find({date: date})
+
+       
+        console.log(findDaily)
+        
+        const daily =  findDaily.filter(ele => ele.studentId === id)
+        console.log(daily)
         res.status(200).json(daily)
     } catch (error) {
         res.status(500).json({ error: error.message });

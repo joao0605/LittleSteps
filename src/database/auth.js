@@ -1,25 +1,32 @@
 const { ObjectId } = require("mongodb")
 const { getMongoCollection } = require("./db")
+import {validateUser} from '../services/permission'
 
-const collectionName = "userstudents"
 
-async function findUserAuthByEmail(email) {
-    
-    const collection = await getMongoCollection(collectionName)
-  
-    return collection.findOne({ email: email })
-}
-async function findUserAuth(uid) {
-    const collection = await getMongoCollection(collectionName)
-    return collection.findOne({ _id: new ObjectId(uid) })
-}
-async function createUserAuth(data) {
-    const collection = await getMongoCollection(collectionName)
-    return collection.insertOne(data)
-}
+    async function findUserAuthByEmail(email) {
 
-module.exports = {
-    createUserAuth,
-    findUserAuth,
-    findUserAuthByEmail
-}
+        const collectionName = await validateUser(email)
+
+        console.log(collectionName)
+
+        const collection = await getMongoCollection(collectionName)
+
+        return collection.findOne({ email: email })
+    }
+    async function findUserAuth(uid) {
+
+        const collectionName = await validateUser(email)
+        const collection = await getMongoCollection(collectionName)
+        return collection.findOne({ _id: new ObjectId(uid) })
+    }
+    async function createUserAuth(data) {
+        //ver depois
+        const collection = await getMongoCollection(collectionName)
+        return collection.insertOne(data)
+    }
+
+    module.exports = {
+        createUserAuth,
+        findUserAuth,
+        findUserAuthByEmail
+    }

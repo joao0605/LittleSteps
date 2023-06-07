@@ -11,7 +11,7 @@ export default function CommentBox(props) {
        
         <div className={styles.comment} >
             <p>Observações</p>
-            <input className={styles.commentbox} onChange={handleValue} type="text"></input>
+            <input value={props.value} className={styles.commentbox} onChange={handleValue} type="text"></input>
         </div>
     )
 }
