@@ -5,12 +5,21 @@ import ButtonRecord from "./buttonRecord"
 import styles from "./buttonInicialPage.module.css"
 import Image from "next/image"
 import logosecundario from '../../../public/logotipoSecundario.svg'
+import Header from "./header"
 
 
 export default function InicialPageStudent() {
 
+    const estudante = {
+        name: "Nelson Medina",
+        date: "12/05/1995"
+    }
+
     return (
         <div>
+             <div>
+                <Header name={estudante.name}/>
+            </div>
             <div className={styles.slider}>
                 <div><ButtonPersonalData /></div>
                 <div><ButtonDailyReport /></div>

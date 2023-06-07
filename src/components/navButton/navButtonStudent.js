@@ -18,20 +18,20 @@ export default function NavButtonStudent() {
 
             <button onClick={() => router.push('/personalDataStudentTest')} className={styles.profile}>
                 <Image
-                    src={profile} />
+                    src={profile} className={styles.icon} />
             </button>
 
             <button onClick={() => router.push('/formTest')} className={styles.report}>
                 <Image
-                    src={report} />
+                    src={report} className={styles.icon} />
             </button>
 
-            <button onClick={() => router.push('/')} className={styles.chat}>
-                <Image src={chat} />
+            <button onClick={() => router.push('/chatTest')} className={styles.chat}>
+                <Image src={chat} className={styles.icon} />
             </button>
 
             <button onClick={() => router.push('/')} className={styles.record}>
-                <Image src={record} />
+                <Image src={record} className={styles.icon} />
             </button>
 
         </div>)
