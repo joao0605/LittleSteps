@@ -3,7 +3,7 @@ import classe from '../../../public/classe.png'
 import styles from './buttonInicialPage.module.css'
 import { useRouter } from "next/router"
 
-// criar pagina chat
+// criar pagina classe
 export default function ButtonClasse() {
 const router = useRouter()
     return (

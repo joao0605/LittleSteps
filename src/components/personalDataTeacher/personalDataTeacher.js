@@ -1,6 +1,7 @@
 import SchoolInfo from "./schoolInfo"
 import TeacherInfo from "./teacherInfo"
 import AddInfo from "../personalDataStudent/addInfo"
+import styles from './TeacherInfo.module.css'
 
 export default function PersonalDataTeacher() {
 
@@ -23,14 +24,14 @@ export default function PersonalDataTeacher() {
   
 
     return (
-        <div>
-            <div>
+        <div className={styles.teacherAll}>
+            <div className={styles.escolaInfo}>
                 <SchoolInfo name={escola.name} phoneNumber={escola.phone} address={escola.address} />
             </div>
-            <div>
+            <div className={styles.professoraInfo}>
                 <TeacherInfo name={professora.name} birthday={professora.date} phoneNumber={professora.phone} email={professora.email} address={professora.address} />
             </div>
-            <div>
+            <div className={styles.observacoesInfo}>
                 <AddInfo addInfo={add.addInfo} />
             </div>
 
