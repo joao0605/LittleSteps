@@ -42,10 +42,11 @@ async function deleteForms(req, res) {
 async function getForms(req, res) {
     connectDB()
     try {
+        const Form = getMongooseFormModel()
         const forms = await Form.find().exec();
-        res.json(forms);
+        return res.json(forms);
     } catch (error) {
-        res.status(500).json({ error: error.message })
+        return res.status(500).json({ error: error.message })
     }
 }
 

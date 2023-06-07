@@ -10,10 +10,10 @@ export default function personalDataStudentTest() {
   useEffect(() => {
     
     async function fetchData() {
-      const res = await fetch('/api/manager/studentUser', {method: "GET"})
+      const res = await fetch('/api/manager/forms', {method: "GET"})
       const data = await res.json();
       setDados(data);
-      console.log(data)
+      console.log(dados)
     }
 
     fetchData();
@@ -22,12 +22,12 @@ export default function personalDataStudentTest() {
     
 
     //aqui vamos verificar se o perfil é do tipo pai ou responsável e enviar a resposta como props, para modificar o formulario
+    //{dados.map(ele => <p>{ele.teacherId}</p>)}
     return (
         <div>
             <TopBar/>
             <NavButtonStudent/>
            <PersonalDataStudent/>
-           
            
         </div>
     )
