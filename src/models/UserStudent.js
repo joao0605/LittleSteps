@@ -2,8 +2,8 @@ import mongoose from "mongoose";
 
 const studentSchema = new mongoose.Schema({
     name: { type: String, required: true },
-    registration: { type: String, required: true },
     birthdate: { type: Date, required: true },
+    registration: { type: String, required: true },
     email: { type: String, required: true },
     password: { type: String, required: true },
     phoneNumber: { type: String, required: true },
@@ -14,7 +14,7 @@ const studentSchema = new mongoose.Schema({
 });
 
 
-export function getMongooseUserStudentModel() {
+export default function getMongooseUserModel() {
     if (mongoose.modelNames().includes("UserStudent")) {
         return mongoose.models.UserStudent
     } else {

@@ -17,8 +17,10 @@ export default mongoose.model("Form", formSchema);
 
 export function getMongooseFormModel() {
     if (mongoose.modelNames().includes("Form")) {
+        console.log("GET EXISTENT")
         return mongoose.models.Form
     } else {
+        console.log("CREATE NEW")
         return mongoose.model("Form", formSchema)
     }
 } 

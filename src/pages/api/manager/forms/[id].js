@@ -3,7 +3,8 @@ import { updateForm } from "@/controllers/FormController";
 
 export default async function (req, res) {
 
-    if( req.method ==="POST"){
+    if( req.method ==="POST"){ // Post ou Patch ?
         updateForm(req, res)
-    }  
+    }
+
 }

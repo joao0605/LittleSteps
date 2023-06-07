@@ -3,7 +3,12 @@ import { deleteTeacherUsers, getTeacherUsers, newTeacherUsers } from "@/controll
 
 export default async function (req, res){
     if (req.method === "POST"){
-        newTeacherUsers(req, res)
+        const userData = req.body;
+        const newUser = await newTeacherUsers(userData)
+        if (!newUser) {
+            return res.status(404).json({ error: 'Usuários não adicionados' });
+        }
+        return res.status(200).json(newUser)
     } 
     if (req.method === "DELETE"){
         deleteTeacherUsers(req, res)

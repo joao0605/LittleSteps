@@ -1,10 +1,19 @@
-import { newTeacherUser, newTeacherUsers, deleteTeacherUsers, getTeacherUsersById } from "@/controllers/TeacherController"
+import { newTeacherUser, newTeacherUsers, deleteTeacherUsers, getTeacherUsersById, updateTeachersData } from "@/controllers/TeacherController"
+import { getMongooseUserModel } from "@/models/User";
 import { ObjectId } from "mongodb";
 
 export default async function handler(req, res) {
 
     if (req.method === "POST") {
-
+        const {id} = req.query
+        if(!ObjectId.isValid(id)) {
+            return res.sendStatus(418)
+        }
+        const updatedForm = await updateTeachersData(id)
+        if (!updatedForm) {
+            return res.status(404).json({ error: 'Usuário não atualizado' });
+        }
+        res.status(200).json(updatedForm);
     }
 
     if (req.method === "GET") {

@@ -42,6 +42,7 @@ async function deleteForms(req, res) {
 async function getForms(req, res) {
     connectDB()
     try {
+        const Form = getMongooseFormModel();
         const forms = await Form.find().exec();
         res.json(forms);
     } catch (error) {
@@ -51,10 +52,11 @@ async function getForms(req, res) {
 
 // Atualiza o formulário
 async function updateForm(req, res) {
-    connectDB()
+    connectDB();
     try {
-      const { _id } = req.params;
-      const updatedForm = await Form.findByIdAndUpdate(_id, req.body, {
+        const Form = getMongooseFormModel();
+      const id = req.query.id;
+      const updatedForm = await Form.findByIdAndUpdate({ _id: new ObjectId(id) }, req.body, {
         new: true,
       }).exec();
   
