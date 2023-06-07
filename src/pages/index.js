@@ -2,7 +2,6 @@ import { getCookie } from 'cookies-next'
 import { verifica } from '../services/user'
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
-import {authorize} from '../services/permission'
 
 export default function Home() {
 

@@ -16,7 +16,7 @@ export default function Form(props) {
 
     
     const handleChange = (name, value) => {
-        
+        console.log(name, value)
         props.onChange([name, value]);
       };
 
@@ -43,30 +43,29 @@ export default function Form(props) {
 
 
 
-    const relatorio = {
-        name: "Joao",
-        date: "05/06/23"
-    }
+    
+    
+    
     //falta NAV bar que ira substituir os botões
     // ideia de fazer a parte de cima do design como um banner
     return (
         <div>
             
-            <ReportBox date={relatorio.date} name={props.name} />
+            <ReportBox date={props.date} name={props.name} />
             <div>
-                <BreakfastBox value={props.breakfast}/>
+                <BreakfastBox value={props.breakfast} onChange={e => handleChange('breakfast', e)}/>
                
             </div>
             <div>
-                <LunchBox value={props.lunch}/>
+                <LunchBox value={props.lunch} onChange={e => handleChange('lunch', e)}/>
             </div>
             <div>
-                <BathroomBox numUm={props.pee} numDois={props.poop}/>
+                <BathroomBox pee={props.pee} poop={props.poop} onChange={e => handleChange(e[0], e[1])}/>
             </div>
             <div>
-                <SleepBox onChange={e => handleChange('nap', e)} />
+                <SleepBox value={props.nap} onChange={e => handleChange('nap', e)} />
             </div>
-            <CommentBox onChange={handleChange} value={props.observations} />
+            <CommentBox onChange={e => handleChange('observations', e)} value={props.observations} />
           
 
         </div>

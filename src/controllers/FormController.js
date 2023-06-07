@@ -6,6 +6,7 @@ async function newForm(req, res) {
     connectDB()
     try {
         const formData = req.body;
+        const Form = getMongooseFormModel()
         const newForm = await Form.create(formData);
 
         return res.status(200).json(newForm);

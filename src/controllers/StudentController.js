@@ -1,7 +1,7 @@
 
 import getMongoCollection from '../database/db'
-import { getMongooseUserStudentModel } from "../models/UserStudent.js";
-import { getMongooseFormModel } from "../models/Form.js";
+import {getMongooseUserStudentModel} from "../models/UserStudent.js";
+import {getMongooseFormModel} from "../models/Form.js";
 
 
 
@@ -44,9 +44,9 @@ async function deleteStudentUsers(req, res) {
 
 // Obtém todos os formulários
 async function getStudentUsers(req, res) {
-    connectDB()
+   connectDB()
     try {
-        const collection = await getMongoCollection(collectionName)
+const collection = await getMongoCollection(collectionName)
 
         const users = await collection.findOne({ email: email })
 
@@ -60,21 +60,21 @@ async function getStudentUsers(req, res) {
 async function getDailyForm(req, res) {
     connectDB()
     const { date, studentId } = req.params;
-
+  
     try {
-        const studentForm = await Form.findById(studentId);
-        const dailyForm = studentForm.find((form) => form.date === date);
-
-        if (!dailyForm) {
-            return res.status(404).json({ error: 'Formulário do aluno não encontrado' });
-        }
-
-        res.status(200).json(dailyForm);
+      const studentForm = await Form.findById(studentId);
+      const dailyForm = studentForm.find((form) => form.date === date);
+  
+      if (!dailyForm) {
+        return res.status(404).json({ error: 'Formulário do aluno não encontrado' });
+      }
+  
+      res.status(200).json(dailyForm);
     } catch (error) {
-        res.status(500).json({ error: error.message });
+      res.status(500).json({ error: error.message });
     }
-}
-
+  }
+  
 
 
 

@@ -9,14 +9,13 @@ export default function RangeSlider(props){
     }
 
     useEffect(() => {
-    
-        
+        console.log(props.value)
         setValor(props.value)
-        
       }, []);
+
     return(
         <div>
-            <input type="range" min="0" max="5" value={valor} onChange={(e) => handleChange(e)}/>
+            <input type="range" min="0" max="5" value={Number(valor)} onChange={(e) => handleChange(e)}/>
             <p>Valor: {valor} </p>
 
                  </div>

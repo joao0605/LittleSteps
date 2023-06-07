@@ -22,8 +22,13 @@ export default function formTest() {
     
     async function fetchData() {
       const res = await fetch('/api/manager/forms', {method: "GET"})
+      if(res.status != 200 ){
+        router.push('/login')
+      }
       const data = await res.json();
       setDadosForm(data);
+      
+      
       
     }
 
@@ -36,7 +41,7 @@ export default function formTest() {
             <TopBar/>
             <NavButton/>
             
-        {dadosForm && dadosForm.map(form => <div>{<Form name={form.studentId} peqAlm={form.breakfast} alm={form.lunch} numUm={form.pee} numDois={form.poop} soneca={form.nap} obs={form.observations}/>}</div>)}
+        {dadosForm && dadosForm.map(form => <div>{<Form edit={true} name={form.studentId} breakfast={form.breakfast} lunch={form.lunch} pee={form.pee} poop={form.poop} nap={form.nap} observations={form.observations}/>}</div>)}
           
         </div>
     )

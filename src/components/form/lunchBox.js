@@ -5,6 +5,10 @@ import RangeSlider from "./rangeSlider";
 
 export default function LunchBox(props) {
 
+    const handleValue = e => {
+               
+        props.onChange(e.target.value)
+       };
 
     return (
 
@@ -15,7 +19,9 @@ export default function LunchBox(props) {
                 <p>Almoço</p>
                 <hr></hr>
                 </div>
-            <RangeSlider value={props.value}/>
+
+                <input value={props.value} type="range" max="5" name='lunch' min="0" onChange={handleValue}/>
+
         </div>
     )
 }

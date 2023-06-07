@@ -1,10 +1,14 @@
 import styles from './form.module.css'
 import Image from "next/image"
 import apple from '../../../public/apple.png'
-import RangeSlider from "./rangeSlider";
+
 
 export default function BreakfastBox(props) {
-
+    const handleValue = e => {
+               
+        props.onChange(e.target.value)
+       };
+ 
 
     return (
 
@@ -15,7 +19,7 @@ export default function BreakfastBox(props) {
                 
                 <hr></hr>
             </div>
-            <RangeSlider value={props.value} />
+            <input type="range" max="5" name='nap' min="0" onChange={handleValue}/>
 
         </div>
     )
