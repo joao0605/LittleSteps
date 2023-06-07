@@ -7,6 +7,14 @@ import {authorize} from '../services/permission'
 export default function Home() {
 
   const router = useRouter();
+
+  useEffect(() => {
+      const logged = Boolean(localStorage.getItem('token'))
+      if (!logged) {
+          router.push('/login')
+      }
+  }, [])
+  
  /* const [loggedIn, setLoggedIn] = useState(false)
   
   useEffect(() => {
@@ -60,24 +68,25 @@ export default function Home() {
 }
 
 
-export const getServerSideProps = async ({ req, res }) => {
-  try {
-    const token = getCookie('authorization', { req, res }); 
-    if (!token) {
-      throw new Error('Token Inválido');
-    }
-    authorize(token);
+// export const getServerSideProps = async ({ req, res }) => {
+//   try {
+//     const token = localStorage.getItem('token'); 
+//     console.log(token)
+//     if (!token) {
+//       throw new Error('Token Inválido');
+//     }
+//     authorize(token);
 
-    return {
-      props: {}
-    };
-  } catch (err) {
-    return {
-      redirect: {
-        permanent: false,
-        destination: '/login'
-      },
-      props: {}
-    };
-  }
-};
+//     return {
+//       props: {}
+//     };
+//   } catch (err) {
+//     return {
+//       redirect: {
+//         permanent: false,
+//         destination: '/login'
+//       },
+//       props: {}
+//     };
+//   }
+// };

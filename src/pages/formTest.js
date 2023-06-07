@@ -2,19 +2,42 @@ import BigMenuButton from "@/components/buttons/bigMenuButton";
 import Form from "@/components/form/form";
 import NavButton from "@/components/navButton/navButtonStudent";
 import TopBar from "@/components/navButton/topBar";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
 
 export default function formTest() {
+    const router = useRouter()
 
+    useEffect(() => {
+        const logged = Boolean(localStorage.getItem('token'))
+        if (!logged) {
+            router.push('/login')
+        }
+    }, [])
+
+    const [dadosForm, setDadosForm] = useState(null);
+
+  useEffect(() => {
     
-    //aqui vamos verificar se o perfil é do tipo pai ou responsável e enviar a resposta como props, para modificar o formulario
+    async function fetchData() {
+      const res = await fetch('/api/manager/forms', {method: "GET"})
+      const data = await res.json();
+      setDadosForm(data);
+      
+    }
+
+    fetchData();
+    
+  }, []);
+    
     return (
         <div>
             <TopBar/>
             <NavButton/>
-            <Form/>
-
-           
+            
+        {dadosForm && dadosForm.map(form => <div>{<Form name={form.studentId} peqAlm={form.breakfast} alm={form.lunch} numUm={form.pee} numDois={form.poop} soneca={form.nap} obs={form.observations}/>}</div>)}
+          
         </div>
     )
 }

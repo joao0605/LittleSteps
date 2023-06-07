@@ -1,11 +1,12 @@
-
-import Form from '../models/Form.js';
+import connectDB from '../database/db-mongoose'
+import {getMongooseFormModel} from '../models/Form.js';
 
 // Cria um novo formulário já com os dados
 async function newForm(req, res) {
+    connectDB()
     try {
         const formData = req.body;
-        const newForm = await Form.create(formData)
+        const newForm = await Form.create(formData);
 
         return res.status(200).json(newForm);
     } catch (error) {
@@ -14,6 +15,7 @@ async function newForm(req, res) {
 }
 // Cria vários formulários já com os dados
 async function newForms(req, res) {
+    connectDB()
     try {
         const formData = req.body;
         const newForm = await Form.insertMany(formData)
@@ -26,6 +28,7 @@ async function newForms(req, res) {
 
 // Apaga todos os formulários
 async function deleteForms(req, res) {
+    connectDB()
     try {
         const del = await Form.deleteMany();
 
@@ -37,16 +40,19 @@ async function deleteForms(req, res) {
 
 // Obtém todos os formulários
 async function getForms(req, res) {
+    connectDB()
     try {
+        const Form = getMongooseFormModel()
         const forms = await Form.find().exec();
-        res.json(forms);
+        return res.json(forms);
     } catch (error) {
-        res.status(500).json({ error: error.message })
+        return res.status(500).json({ error: error.message })
     }
 }
 
 // Atualiza o formulário
 async function updateForm(req, res) {
+    connectDB()
     try {
       const { _id } = req.params;
       const updatedForm = await Form.findByIdAndUpdate(_id, req.body, {

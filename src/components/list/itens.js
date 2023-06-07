@@ -1,3 +1,4 @@
+
 import Image from "next/image";
 import notStart from '../../../public/statusNotStart.png'
 import complete from '../../../public/statusComplete.png'
@@ -56,5 +57,6 @@ export function ItemHistory({ name, date, onClick }) {
 export function Alerta() {
     alert("Tem a certeza que quer submeter?");
 }
+
 
 

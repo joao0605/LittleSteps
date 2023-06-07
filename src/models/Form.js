@@ -13,6 +13,13 @@ const formSchema = new mongoose.Schema({
     courseId: { type: String, required: true }
 });
 
-export default mongoose.model("Form", formSchema);
+
+export function getMongooseFormModel() {
+    if (mongoose.modelNames().includes("Form")) {
+        return mongoose.models.Form
+    } else {
+        return mongoose.model("Form", formSchema)
+    }
+} 
 
 

@@ -4,7 +4,7 @@ import Image from "next/image"
 import bathroom from '../../../public/bathroom.png'
 
 
-export default function BathroomBox() {
+export default function BathroomBox(props) {
 
 
     return (
@@ -18,11 +18,11 @@ export default function BathroomBox() {
             <div className={styles.sliders}>
                 <div>
                     <p>Nº 1</p>
-                    <RangeSlider />
+                    <RangeSlider value={props.numUm} />
                 </div>
                 <div>
-                    <p>Nº 2</p>
-                    <RangeSlider />
+                    <p>Nº 2 </p>
+                    <RangeSlider value={props.numDois} />
                 </div>
             </div>
         </div>

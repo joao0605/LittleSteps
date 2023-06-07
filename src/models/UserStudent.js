@@ -13,4 +13,11 @@ const studentSchema = new mongoose.Schema({
     courseId: { type: String, required: true },
 });
 
-export default mongoose.model("UserStudent", studentSchema)
+
+export function getMongooseUserStudentModel() {
+    if (mongoose.modelNames().includes("UserStudent")) {
+        return mongoose.models.UserStudent
+    } else {
+        return mongoose.model("UserStudent", studentSchema)
+    }
+} 

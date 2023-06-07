@@ -3,9 +3,13 @@ import Image from "next/image"
 import sleep from '../../../public/sleep.png'
 import RangeSlider from "./rangeSlider";
 
-export default function SleepBox() {
+export default function SleepBox(props) {
 
-   
+    const handleValue = e => {
+               
+       props.onChange(e.target.value)
+      };
+
     return (
        
         <div className={styles.sleepbox}>
@@ -15,7 +19,7 @@ export default function SleepBox() {
             <p>Soneca</p>
             <hr></hr> 
             </div>
-            <RangeSlider/>
+            <input type="range" max="5" name='nap' min="0" onChange={handleValue}/>
         </div>
     )
 }

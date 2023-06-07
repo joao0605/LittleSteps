@@ -3,7 +3,7 @@ import Image from "next/image"
 import lunch from '../../../public/lunch.png'
 import RangeSlider from "./rangeSlider";
 
-export default function LunchBox() {
+export default function LunchBox(props) {
 
 
     return (
@@ -15,7 +15,7 @@ export default function LunchBox() {
                 <p>Almoço</p>
                 <hr></hr>
                 </div>
-            <RangeSlider />
+            <RangeSlider value={props.value}/>
         </div>
     )
 }

@@ -12,4 +12,12 @@ const teacherSchema = new mongoose.Schema({
     courseId: { type: String, required: true },
 });
 
-export default mongoose.model("UserTeacher", teacherSchema)
+
+
+export function getMongooseUserTeacherModel() {
+    if (mongoose.modelNames().includes("UserTeacher")) {
+        return mongoose.models.UserTeacher
+    } else {
+        return mongoose.model("UserTeacher", teacherSchema)
+    }
+} 
