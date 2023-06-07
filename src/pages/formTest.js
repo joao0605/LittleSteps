@@ -16,16 +16,28 @@ export default function formTest() {
         }
     }, [])
 
+    const [dadosForm, setDadosForm] = useState(null);
+
+  useEffect(() => {
     
+    async function fetchData() {
+      const res = await fetch('/api/manager/forms', {method: "GET"})
+      const data = await res.json();
+      setDadosForm(data);
+      
+    }
+
+    fetchData();
     
-    //aqui vamos verificar se o perfil é do tipo pai ou responsável e enviar a resposta como props, para modificar o formulario
+  }, []);
+    
     return (
         <div>
             <TopBar/>
             <NavButton/>
-            <Form/>
-
-           
+            
+        {dadosForm && dadosForm.map(form => <div>{<Form name={form.studentId} peqAlm={form.breakfast} alm={form.lunch} numUm={form.pee} numDois={form.poop} soneca={form.nap} obs={form.observations}/>}</div>)}
+          
         </div>
     )
 }

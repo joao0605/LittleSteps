@@ -12,13 +12,13 @@ import { useState } from "react";
 
 
 
-export default function Form() {
+export default function Form(props) {
 
-    // const [formData, setFormData] = useState({
-    //     date: new Date(),
-    //     breakfast: 2,
-    //     nap: 3 
-    // })
+    
+    const handleChange = (name, value) => {
+        
+        props.onChange([name, value]);
+      };
 
     // function handleClick() {
     //     fetch ("/api/maganer/form", {
@@ -39,6 +39,10 @@ export default function Form() {
     //     }
     //     return response.json()
     // }
+
+
+
+
     const relatorio = {
         name: "Joao",
         date: "05/06/23"
@@ -48,20 +52,21 @@ export default function Form() {
     return (
         <div>
             
-            <ReportBox date={relatorio.date} name={relatorio.name} />
+            <ReportBox date={relatorio.date} name={props.name} />
             <div>
-                <BreakfastBox />
+                <BreakfastBox value={props.breakfast}/>
+               
             </div>
             <div>
-                <LunchBox />
+                <LunchBox value={props.lunch}/>
             </div>
             <div>
-                <BathroomBox />
+                <BathroomBox numUm={props.pee} numDois={props.poop}/>
             </div>
             <div>
-                <SleepBox />
+                <SleepBox onChange={e => handleChange('nap', e)} />
             </div>
-            <CommentBox />
+            <CommentBox onChange={handleChange} value={props.observations} />
           
 
         </div>
