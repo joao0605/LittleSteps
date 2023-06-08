@@ -5,9 +5,11 @@ import {validateUser} from '../services/permission'
 
     async function findUserAuthByEmail(email) {
 
+        console.log(email)
+
         const collectionName = await validateUser(email)
 
-        console.log(collectionName)
+        console.log("aqui nulo?", collectionName)
 
         const collection = await getMongoCollection(collectionName)
 

@@ -51,8 +51,10 @@ async function validateTeacher(email) {
 }
 
 async function validateUser(email) {
+    
     const isTeacher = await validateTeacher(email);
     const isStudent = await validateStudent(email);
+    console.log(isTeacher)
 
     if (isTeacher) {
         return userTeacher

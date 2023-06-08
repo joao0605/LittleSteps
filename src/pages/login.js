@@ -30,14 +30,15 @@ export default function LoginPage() {
         if (res.status === 200) {
             const corpo = await res.json()
             localStorage.setItem("token", corpo.token)
+            localStorage.setItem("userType", corpo.userType)
             // setCookie('authorization', corpo)
            if(corpo.userType  === "userteachers"){
 
-               router.push("/formTeacher")
+               router.push("/personalDataTeacherTest")
 
            } else if( corpo.userType === "userstudents"){
 
-               router.push("/formTest")
+               router.push("/personalDataStudentTest")
            }
 
         } else {
