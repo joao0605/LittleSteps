@@ -1,7 +1,6 @@
 import BigMenuButton from "@/components/buttons/bigMenuButton";
 import Form from "@/components/form/form";
 import NavButtonStudent from "@/components/navButton/navButtonStudent";
-import NavButton from "@/components/navButton/navButtonStudent";
 import TopBar from "@/components/navButton/topBar";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -18,66 +17,79 @@ export default function formTest() {
     }, [])
 
     const [dadosForm, setDadosForm] = useState(null);
-    const [userId, setUserId] = useState(null);
-    const data = new Date()
-    const formatedDate = `${data.getFullYear()}-${data.getMonth()}-${data.getDate()}`
+    const date = new Date()
+    let day = date.getDate()
+    let month = date.getMonth()+1
+
+    if (day < 10){
+      day =`0${day}`
+    }
+    if (month < 10){
+      month =`0${month}`
+    }
+    const formatedDate = `${date.getFullYear()}-${month}-${day}`
+
 
 
     useEffect(() => {
       async function fetchSession() {
         try {
-          const res = await fetch('/api/auth/validate', {
+          const res = await fetch("/api/auth/validate", {
             method: "POST",
             headers: {
-              "Content-Type": "application/json"
+              "Content-Type": "application/json",
             },
-            body: JSON.stringify({ token: localStorage.getItem("token") })
+            body: JSON.stringify({ token: localStorage.getItem("token") }),
           });
           if (!res.ok) {
             throw new Error("Failed to validate session");
           }
           const data = await res.json();
-          setUserId(data.session.userId);
+          console.log(data.session.userId);
+          
+          return data.session.userId;
         } catch (error) {
           console.error(error);
           // Lida com o erro, se necessário
           return null;
         }
       }
-    
-      
-    
-      fetchSession()
-       
-    }, []);
-    
-
-  useEffect(() => {
-    
-    async function fetchData() {
-      const res = await fetch(`/api/manager/forms/${userId}/${formatedDate}`, {method: "GET"})
-      if(res.status != 200 ){
-        message = "Formulário ainda não disponível, volte mais tarde!!"
+  
+      async function fetchData() {
+        const userId = await fetchSession();
+        console.log("esse é o userID", userId);
+        const res = await fetch(
+          `/api/manager/forms/${userId}/${formatedDate}`,
+          { method: "GET" }
+        );
+        if (res.status != 200) {
+          setMessage("Formulário ainda não disponível, volte mais tarde!!");
+        } else {
+          const data = await res.json();
+          console.log("esse eh o de dados", data);
+          setDadosForm(data);
+        }
       }
-      const data = await res.json();
-      setDadosForm(data);
-      
-      
-      
-    }
+  
+      fetchData();
+    }, []);
 
-    fetchData();
-    
-  }, []);
-    
     return (
         <div>
             <TopBar/>
             <NavButtonStudent/>
             
-        {!dadosForm ? <p>{message}</p> : <p>formulario</p>}
-        {//{<Form  name={form.studentId} breakfast={form.breakfast} lunch={form.lunch} pee={form.pee} poop={form.poop} nap={form.nap} observations={form.observations}/>}</div>)}
-        }  
+        {!dadosForm ? <p>{message}</p> :   <Form
+          key={dadosForm.studentId} // Adicione uma chave única para cada elemento gerado
+          name={dadosForm.studentId}
+          breakfast={dadosForm.breakfast}
+          lunch={dadosForm.lunch}
+          pee={dadosForm.pee}
+          poop={dadosForm.poop}
+          nap={dadosForm.nap}
+          observations={dadosForm.observations}
+        />}
+          
         </div>
     )
 }

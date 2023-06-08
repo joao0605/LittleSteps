@@ -29,7 +29,7 @@ export default function personalDataTeacherTest() {
             return null;
           }
         }
-      
+    
         async function fetchData(userId) {
           try {
             const res = await fetch(`/api/manager/users/${userId}`, { method: "GET" });
@@ -38,13 +38,12 @@ export default function personalDataTeacherTest() {
             }
             const data = await res.json();
             setDados(data);
-            
           } catch (error) {
             console.error(error);
             // Lida com o erro, se necessário
           }
         }
-      
+    
         fetchSession()
           .then(userId => {
             if (userId) {
@@ -58,45 +57,7 @@ export default function personalDataTeacherTest() {
             // Lida com o erro, se necessário
           });
       }, []);
-      
  
- /* const [loggedIn, setLoggedIn] = useState(false)
-  
- useEffect(() => {
-     
-    
-    /* console.log(localStorage.getItem("userType"))
-     console.log(localStorage.getItem("token"))
-
-     async function fetchSession() {
-        const res = await fetch('/api/auth/validate', {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({token: localStorage.getItem("token")})
-        })
-        const data = await res.json();
-        return data.session.userId
-        
-      }
-      async function fetchData(userId) {
-        const res = await fetch(`/api/manager/users/${userId}`, {method: "GET"})
-        const data = await res.json();
-        setDados(data);
-        console.log(data)
-        
-      }
-      const session = fetchSession();
-      fetchData(userId);
-
-    
-    }, [])
-     */
- 
-  
-
-    //aqui vamos verificar se o perfil é do tipo pai ou responsável e enviar a resposta como props, para modificar o formulario
     return (
         <div>
             <TopBar/>
