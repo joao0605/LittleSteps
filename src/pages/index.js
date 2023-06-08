@@ -8,11 +8,18 @@ export default function Home() {
   const router = useRouter();
 
   useEffect(() => {
-      const logged = Boolean(localStorage.getItem('token'))
-      if (!logged) {
-          router.push('/login')
-      }
-  }, [])
+    const userType = localStorage.getItem('userType')
+   
+    if(userType  === "userteachers"){
+
+        router.push("/personalDataTeacherTest")
+
+    } else if( userType === "userstudents"){
+
+        router.push("/personalDataStudentTest")
+    }
+
+}, [])
   
  /* const [loggedIn, setLoggedIn] = useState(false)
   

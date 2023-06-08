@@ -6,8 +6,12 @@ import { useRouter } from "next/router"
 
 
 export default function TopBar() {
-  
-  
+  const router = useRouter()
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.removeItem("userType");
+    router.push("/login");
+  };
 
   return (
     <div className={styles.navbar}>
@@ -16,9 +20,19 @@ export default function TopBar() {
         <Image
           src={logo} />
       </div>
+
+      <div className={styles.iconeProfile}>
+        <Image
+          src={logo} onClick={handleLogout}/>
+          
+      </div>
+      
+      
       <div className={styles.logotext} >
         <Image src={logotext} />
+       
       </div>
+     
     </div>
     )
 }

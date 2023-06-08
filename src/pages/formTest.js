@@ -11,12 +11,18 @@ export default function formTest() {
     
     const [message, setMessage] = useState("Carregando informações")
     useEffect(() => {
-        const logged = Boolean(localStorage.getItem('token'))
-        const userType = localStorage.getItem('userType')
-        if (!logged || userType !== "userstudents") {
-            router.push('/login')
-        }
-    }, [])
+      const userType = localStorage.getItem('userType')
+     
+      if(userType  === "userteachers"){
+
+          router.push("/formTeacher")
+
+      } else if( userType !== "userstudents"){
+
+          router.push("/login")
+      }
+
+  }, [])
 
     const [dadosForm, setDadosForm] = useState(null);
     const date = new Date()

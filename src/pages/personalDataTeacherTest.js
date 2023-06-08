@@ -57,6 +57,20 @@ export default function personalDataTeacherTest() {
             // Lida com o erro, se necessário
           });
       }, []);
+
+      useEffect(() => {
+        const userType = localStorage.getItem('userType')
+       
+        if(userType  === "userstudents"){
+
+            router.push("/personalDataStudentTest")
+
+        } else if( userType !== "userteachers"){
+
+            router.push("/login")
+        }
+
+    }, [])
  
     return (
         <div>
