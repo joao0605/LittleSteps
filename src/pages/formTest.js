@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 
 export default function formTest() {
     const router = useRouter()
-
+    let message = "Carregando informações"
     useEffect(() => {
         const logged = Boolean(localStorage.getItem('token'))
         if (!logged) {
@@ -18,15 +18,46 @@ export default function formTest() {
     }, [])
 
     const [dadosForm, setDadosForm] = useState(null);
+    const [userId, setUserId] = useState(null);
     const data = new Date()
     const formatedDate = `${data.getFullYear()}-${data.getMonth()}-${data.getDate()}`
+
+
+    useEffect(() => {
+      async function fetchSession() {
+        try {
+          const res = await fetch('/api/auth/validate', {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ token: localStorage.getItem("token") })
+          });
+          if (!res.ok) {
+            throw new Error("Failed to validate session");
+          }
+          const data = await res.json();
+          setUserId(data.session.userId);
+        } catch (error) {
+          console.error(error);
+          // Lida com o erro, se necessário
+          return null;
+        }
+      }
+    
+      
+    
+      fetchSession()
+       
+    }, []);
+    
 
   useEffect(() => {
     
     async function fetchData() {
-      const res = await fetch(`/api/manager/forms/647ec872b2375619cca31e98/${formatedDate}`, {method: "GET"})
+      const res = await fetch(`/api/manager/forms/${userId}/${formatedDate}`, {method: "GET"})
       if(res.status != 200 ){
-        router.push('/login')
+        message = "Formulário ainda não disponível, volte mais tarde!!"
       }
       const data = await res.json();
       setDadosForm(data);
@@ -44,8 +75,9 @@ export default function formTest() {
             <TopBar/>
             <NavButtonStudent/>
             
-        {dadosForm && dadosForm.map(form => <div>{<Form edit={true} name={form.studentId} breakfast={form.breakfast} lunch={form.lunch} pee={form.pee} poop={form.poop} nap={form.nap} observations={form.observations}/>}</div>)}
-          
+        {!dadosForm ? <p>{message}</p> : <p>formulario</p>}
+        {//{<Form  name={form.studentId} breakfast={form.breakfast} lunch={form.lunch} pee={form.pee} poop={form.poop} nap={form.nap} observations={form.observations}/>}</div>)}
+        }  
         </div>
     )
 }
