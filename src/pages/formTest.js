@@ -8,7 +8,8 @@ import { useEffect, useState } from "react";
 
 export default function formTest() {
     const router = useRouter()
-    let message = "Carregando informações"
+    
+    const [message, setMessage] = useState("Carregando informações")
     useEffect(() => {
         const logged = Boolean(localStorage.getItem('token'))
         if (!logged) {
