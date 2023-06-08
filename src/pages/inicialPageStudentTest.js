@@ -1,5 +1,5 @@
 import InicialPageStudent from "@/components/inicialPage/inicialPageStudent"
-import NavButtonStudent from "@/components/navButton/navButtonStudent"
+
 import TopBar from "@/components/navButton/topBar"
 
 export default function inicialPage() {

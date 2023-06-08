@@ -8,27 +8,27 @@ import { useRouter } from "next/router"
 
 
 
-export default function NavButtonTeacher() {
+export default function NavButtonTeacher(props) {
     const router = useRouter()
 
     return (
         <div className={styles.navButtons}>
 
-            <button onClick={() => router.push('/personalDataTeacherTest')} className={styles.profile}>
+            <button onClick={() => router.push('/personalDataTeacherTest')} className={props.page == 'personalDataTeacherTest' ? styles.profile : styles.profileOpacity}>
                 <Image
                     src={profile}className={styles.icon} />
             </button>
 
-            <button onClick={() => router.push('/formTest')} className={styles.report}>
+            <button onClick={() => router.push('/formTeacher')} className={props.page == 'formTeacher' ? styles.report : styles.reportOpacity}>
                 <Image
                     src={report}className={styles.icon} />
             </button>
 
-            <button onClick={() => router.push('/chatTest')} className={styles.chat}>
+            <button onClick={() => router.push('/chatTest')} className={props.page == 'chatTest' ? styles.chat : styles.chatOpacity}>
                 <Image src={chat}className={styles.icon} />
             </button>
 
-            <button onClick={() => router.push('/listStudents')} className={styles.classe}>
+            <button onClick={() => router.push('/listStudents')} className={props.page == 'listStudents' ? styles.classe : styles.classeOpacity}>
                 <Image src={classe}className={styles.icon} />
             </button>
 

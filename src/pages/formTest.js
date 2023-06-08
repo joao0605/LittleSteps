@@ -85,7 +85,7 @@ export default function formTest() {
     return (
         <div>
             <TopBar/>
-            <NavButtonStudent/>
+            <NavButtonStudent page="formTest"/>
             
         {!dadosForm ? <p>{message}</p> :   <Form
           key={dadosForm.studentId} // Adicione uma chave única para cada elemento gerado

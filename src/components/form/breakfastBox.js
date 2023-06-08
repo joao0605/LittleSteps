@@ -5,10 +5,10 @@ import apple from '../../../public/apple.png'
 
 export default function BreakfastBox(props) {
     const handleValue = e => {
-               
+
         props.onChange(e.target.value)
-       };
- 
+    };
+
 
     return (
 
@@ -16,10 +16,9 @@ export default function BreakfastBox(props) {
             <div className={styles.iconline}><Image
                 src={apple} />
                 <p>Pequeno Almoço </p>
-                
-                <hr></hr>
+                <hr className={styles.hrline} />
             </div>
-            <input type="range" max="5" name='nap' min="0" onChange={handleValue}/>
+            <input className={styles.actualslider} type="range" max="5" name='nap' min="0" onChange={handleValue} />
 
         </div>
     )

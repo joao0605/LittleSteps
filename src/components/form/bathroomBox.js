@@ -20,16 +20,16 @@ export default function BathroomBox(props) {
             <div className={styles.iconline}> <Image
                 src={bathroom} />
                 <p>Casa de Banho</p>
-                <hr></hr>
+                <hr className={styles.hrline} />
             </div>
             <div className={styles.sliders}>
-                <div>
-                    <p>Nº 1</p>
-                    <input   type="range" min="0" max="1"  onChange={(e) => handleValue("pee", e.target.value)} />
+                <div className={styles.necessity}>
+                    <p className={styles.bathroomspec}>Nº 1</p>
+                    <input className={styles.actualslider}  type="range" min="0" max="1"  onChange={(e) => handleValue("pee", e.target.value)} />
                 </div>
                 <div>
-                    <p>Nº 2 </p>
-                    <input type="range" min="0" max="1"  onChange={(e) => handleValue("poop", e.target.value)} />
+                    <p className={styles.bathroomspec}>Nº 2 </p>
+                    <input className={styles.actualslider} type="range" min="0" max="1"  onChange={(e) => handleValue("poop", e.target.value)} />
                 </div>
             </div>
         </div>

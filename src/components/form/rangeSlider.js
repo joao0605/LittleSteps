@@ -14,8 +14,8 @@ export default function RangeSlider(props){
       }, []);
 
     return(
-        <div>
-            <input type="range" min="0" max="5" value={Number(valor)} onChange={(e) => handleChange(e)}/>
+        <div className={styles.slider}>
+            <input className={styles.actualslider} type="range" min="0" max="5" value={Number(valor)} onChange={(e) => handleChange(e)}/>
             <p>Valor: {valor} </p>
 
                  </div>

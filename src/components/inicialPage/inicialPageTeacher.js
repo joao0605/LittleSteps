@@ -4,7 +4,7 @@ import ButtonPersonalData from "./buttonPersonalData"
 import ButtonClasse from "./buttonClasse"
 import styles from "./buttonInicialPage.module.css"
 import Image from "next/image"
-import logosecundario from '../../../public/logotipoSecundario.svg'
+import logosecundario from '../../../public/novologomamae.png'
 import Header from "./header"
 
 
@@ -19,9 +19,6 @@ export default function InicialPageTeacher() {
 
     return (
         <div>
-            <div>
-                <Header name={estudante.name}/>
-            </div>
             <div className={styles.slider}>
                 <div><ButtonPersonalData /></div>
                 <div><ButtonDailyReport /></div>
@@ -31,8 +28,10 @@ export default function InicialPageTeacher() {
                 <div><ButtonChat /></div>
                 <div><ButtonClasse /></div>
             </div>
-            <div className={styles.logosecundario}> <Image
-                src={logosecundario} />
+
+            <div >
+                <Image className={styles.logosecundario}
+                    src={logosecundario} />
             </div>
         </div>
     )

@@ -1,11 +1,13 @@
 import Image from "next/image"
 import logo from '../../../public/Logotipo_Little_Steps.png'
 import logotext from '../../../public/Little_Steps.png'
+import logout from '../../../public/logout2.png'
 import styles from './navBar.module.css'
 import { useRouter } from "next/router"
 
 
 export default function TopBar() {
+
   const router = useRouter()
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -21,9 +23,9 @@ export default function TopBar() {
           src={logo} />
       </div>
 
-      <div className={styles.iconeProfile}>
+      <div className={styles.logout}>
         <Image
-          src={logo} onClick={handleLogout}/>
+          src={logout} onClick={handleLogout}/>
           
       </div>
       

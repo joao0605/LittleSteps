@@ -17,10 +17,10 @@ export default function LunchBox(props) {
                 <Image
                     src={lunch} />
                 <p>Almoço</p>
-                <hr></hr>
+                <hr className={styles.hrline} />
                 </div>
 
-                <input value={props.value} type="range" max="5" name='lunch' min="0" onChange={handleValue}/>
+                <input className={styles.actualslider} value={props.value} type="range" max="5" name='lunch' min="0" onChange={handleValue}/>
 
         </div>
     )

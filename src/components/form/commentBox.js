@@ -10,8 +10,9 @@ export default function CommentBox(props) {
     return (
        
         <div className={styles.comment} >
-            <p>Observações</p>
+            <p className={styles.commentTitle}>Observações</p>
             <input value={props.value} className={styles.commentbox} onChange={handleValue} type="text"></input>
         </div>
     )
 }
+/*max length 48*/

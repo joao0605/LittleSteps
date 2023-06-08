@@ -8,7 +8,7 @@ import { useRouter } from "next/router"
 
 //criar rota para o chat e para record
 
-export default function NavButtonStudent() {
+export default function NavButtonStudent(props) {
 
     const router = useRouter()
 
@@ -16,21 +16,21 @@ export default function NavButtonStudent() {
     return (
         <div className={styles.navButtons}>
 
-            <button onClick={() => router.push('/personalDataStudentTest')} className={styles.profile}>
+            <button onClick={() => router.push('/personalDataStudentTest')} className={props.page == 'personalDataStudentTest' ? styles.profile : styles.profileOpacity}>
                 <Image
                     src={profile} className={styles.icon} />
             </button>
 
-            <button onClick={() => router.push('/formTest')} className={styles.report}>
+            <button onClick={() => router.push('/formTest')} className={props.page == 'formTest' ? styles.report : styles.reportOpacity}>
                 <Image
                     src={report} className={styles.icon} />
             </button>
 
-            <button onClick={() => router.push('/chatTest')} className={styles.chat}>
+            <button onClick={() => router.push('/chatStudent')} className={props.page == 'chatStudent' ? styles.chat : styles.chatOpacity}>
                 <Image src={chat} className={styles.icon} />
             </button>
 
-            <button onClick={() => router.push('/')} className={styles.record}>
+            <button onClick={() => router.push('/listHistoryReportStudent')} className={props.page == 'listHistoryReportStudent' ? styles.record : styles.recordOpacity}>
                 <Image src={record} className={styles.icon} />
             </button>
 

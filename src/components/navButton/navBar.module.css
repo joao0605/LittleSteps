@@ -27,7 +27,7 @@
 }
 
 /*Para encaixar os botões na caixa*/
-.profile, .report, .chat, .classe{
+.profile, .report, .chat, .classe, .record, .profileOpacity, .chatOpacity, .classeOpacity, .reportOpacity, .recordOpacity{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -53,6 +53,24 @@
 
 }
 
+.profileOpacity {
+    margin-right: var(--buttonMargin);
+
+
+    border-radius: 50%;
+    background-color: var(--profile);
+    
+    text-align: center;
+
+    width: 70px;
+    height: 70px;
+    
+    z-index: -1;
+
+    opacity: 0.5;
+
+}
+
 
 .report {
     margin-right: var(--buttonMargin);
@@ -67,6 +85,21 @@
     z-index: -1
 }
 
+.reportOpacity{
+    margin-right: var(--buttonMargin);
+
+    border-radius: 50%;
+    background-color: var(--report);
+
+    text-align: center;
+
+    width: 70px;
+    height: 70px;
+    z-index: -1;
+
+    opacity: 0.5;
+}
+
 
 .chat {
     margin-right: var(--buttonMargin);
@@ -78,9 +111,23 @@
 
     width: 70px;
     height: 70px;
-    z-index: 10
+    z-index: -1
 }
 
+.chatOpacity{
+    margin-right: var(--buttonMargin);
+
+    border-radius: 50%;
+    background-color: var(--chat);
+
+    text-align: center;
+
+    width: 70px;
+    height: 70px;
+    z-index: -1;
+
+    opacity: 0.5;
+}
 
 .record {
     border-radius: 50%;
@@ -93,6 +140,20 @@
     z-index: -1
 }
 
+.recordOpacity {
+    border-radius: 50%;
+    background-color: var(--records);
+
+    text-align: center;
+
+    width: 70px;
+    height: 70px;
+    z-index: -1;
+
+    opacity: 0.5;
+
+}
+
 .classe {
     border-radius: 50%;
     background-color: var(--records);
@@ -103,7 +164,30 @@
     height: 70px;
 }
 
+.classeOpacity{
+    border-radius: 50%;
+    background-color: var(--records);
+
+    text-align: center;
+
+    width: 70px;
+    height: 70px;
+
+    opacity: 0.5;
+}
+
 .iconeProfile {
     height: 100px;
     width: 100px;
+}
+
+.logout {
+    height: 100px;
+    max-width: 30px;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(550%, -8%);
+
 }

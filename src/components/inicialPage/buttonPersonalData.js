@@ -8,7 +8,7 @@ import { useRouter } from "next/router"
 
     return (
         <div className={styles.iconPersonalData}>
-        <button onClick={() => router.push('/personalDataTeacherTest')}><Image src={profile} /></button>
+        <button onClick={() => router.push('/personalDataTeacherTest')}><Image className= {styles.imgProfile} src={profile} /></button>
     </div>
     )
 }
