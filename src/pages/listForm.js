@@ -3,51 +3,36 @@ import List from "@/components/list/list"
 import NavButtonTeacher from "@/components/navButton/navButtonTeacher"
 import { Alerta, ItemForm } from "@/components/list/itens"
 import { useRouter } from "next/router"
+import { useEffect, useState } from "react"
 
 
 
 
 export default function listForm() {
 
-    const itens =
-        [{
-            name: "Nelson Medina",
-            registration: "1123",
-            historyDate: "21/05/2023",
-            status: 2
-        },
-        {
-            name: "Carla Medina",
-            registration: "1173",
-            status: 0
-        },
-        {
-            name: "Nelson Medina",
-            registration: "1123",
-            data: "22/05/2023",
-            status: 2
-        },{
-            name: "Nelson Medina",
-            registration: "1123",
-            data: "23/05/2023",
-            status: 1
-        },{
-            name: "Nelson Medina",
-            registration: "1123",
-            data: "24/05/2023",
-            status: 0
-        },{
-            name: "Nelson Medina",
-            registration: "1123",
-            data: "25/05/2023",
-            status: 2
-        },{
-            name: "Nelson Medina",
-            registration: "1123",
-            data: "26/05/2023",
-            status: 2
-        },
-    ]
+const [forms, setForms] = useState(null)
+
+    useEffect(()=> {
+        async function fetchData() {
+            
+            const res = await fetch(
+              `/api/manager/studentUser`,
+              { method: "GET" }
+            );
+            if (res.status != 200) {
+              setMessage("Formulários ainda não disponíveis");
+            } else {
+              const data = await res.json();
+              console.log("esse eh o de dados", data);
+              setForms(data);
+            }
+          }
+
+          fetchData()
+    }, [])
+
+
+    
 
        const router = useRouter()
 //onClick tem que chamar uma function
@@ -60,7 +45,7 @@ export default function listForm() {
           <NavButtonTeacher/>
           <div>
             <List>
-                {itens.map(i => <ItemForm onClick={() => router.push('/formTest')} status={i.status} name={i.name} registration={i.registration} />)}
+                {forms && forms.map(i => <ItemForm onClick={() => router.push('/formTest')} status={i.status} name={i.name} registration={i.registration} />)}
             </List>
             </div>
 

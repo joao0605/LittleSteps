@@ -9,8 +9,8 @@ import connectDB from '@/database/db-mongoose';
 
 // Cria um novo user já com os dados
 async function newStudentUser(req, res) {
-    connectDB()
     try {
+        connectDB()
         const userData = req.body;
         const newUser = await UserStudent.create(userData)
 
@@ -21,8 +21,8 @@ async function newStudentUser(req, res) {
 }
 // Cria vários users já com os dados
 async function newStudentUsers(req, res) {
-    connectDB()
     try {
+        connectDB()
         const userData = req.body;
         const newUser = await UserStudent.insertMany(userData)
 
@@ -34,8 +34,8 @@ async function newStudentUsers(req, res) {
 
 // Apaga todos os formulários
 async function deleteStudentUsers(req, res) {
-    connectDB()
     try {
+        connectDB()
         const del = await UserStudent.deleteMany();
 
         return res.status(200).json(del);
@@ -46,11 +46,11 @@ async function deleteStudentUsers(req, res) {
 
 // Obtém todos os formulários
 async function getStudentUsers(req, res) {
-    connectDB()
     try {
-        const collection = await getMongoCollection(collectionName)
+        connectDB()
+        const Model = getMongooseUserStudentModel()
 
-        const users = await collection.findOne({ email: email })
+        const users = await Model.find().exec()
 
         res.status(200).json(users);
     } catch (error) {
