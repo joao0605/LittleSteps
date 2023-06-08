@@ -3,22 +3,16 @@ import TeacherInfo from "./teacherInfo"
 import AddInfo from "../personalDataStudent/addInfo"
 import styles from './TeacherInfo.module.css'
 
-export default function PersonalDataTeacher() {
+export default function PersonalDataTeacher(props) {
 
     const escola = {
         name: "Amanhecer Feliz",
         phone: "999 999 999",
         address: "Rua das Felicidades"
     }
-    const professora = {
-        name: "Amanda Quaresma",
-        date: "28/10/2004",
-        phone: "999 999 999",
-        email: "aq_amanhecer@hotmail.com",
-        address: "Rua Lá Lá desse Lado"
-    }
+  
     const add = {
-        addInfo: "Alergica a crianças"
+        addInfo: "Alérgica a crianças"
     }
 
   
@@ -29,7 +23,7 @@ export default function PersonalDataTeacher() {
                 <SchoolInfo name={escola.name} phoneNumber={escola.phone} address={escola.address} />
             </div>
             <div className={styles.professoraInfo}>
-                <TeacherInfo name={professora.name} birthday={professora.date} phoneNumber={professora.phone} email={professora.email} address={professora.address} />
+                <TeacherInfo name={props.name} birthday={props.birthdate} phoneNumber={props.phoneNumber} email={props.email} address={props.address} />
             </div>
             <div className={styles.observacoesInfo}>
                 <AddInfo addInfo={add.addInfo} />
