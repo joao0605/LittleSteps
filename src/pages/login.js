@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
 import { useRouter } from 'next/router'
-import { useState } from 'react'
+import { useState, useEffect} from 'react'
 import styles from '../styles/login.module.css'
 
 
@@ -45,6 +45,20 @@ export default function LoginPage() {
             setError("Usuário ou senha incorretos")
         };
     }
+
+    useEffect(() => {
+        const userType = localStorage.getItem('userType')
+       
+        if(userType  === "userteachers"){
+
+            router.push("/personalDataTeacherTest")
+
+        } else if( userType === "userstudents"){
+
+            router.push("/personalDataStudentTest")
+        }
+
+    }, [])
 
 
 const handleSubmit = (e) => {

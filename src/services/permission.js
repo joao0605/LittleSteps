@@ -31,6 +31,24 @@ async function authorize(token) {
 const userTeacher = "userteachers"
 const userStudent = "userstudents"
 
+async function validateUser(email) {
+    const collectionTeacher = await getMongoCollection(userTeacher);
+    const collectionStudent = await getMongoCollection(userStudent);
+  
+    const teacherCount = await collectionTeacher.countDocuments({ email: email });
+    const studentCount = await collectionStudent.countDocuments({ email: email });
+  
+    if (teacherCount > 0) {
+      console.log("é professor");
+      return userTeacher;
+    } else if (studentCount > 0) {
+      console.log("é estudante");
+      return userStudent;
+    }
+  
+    return null;
+  }
+/*
 async function validateStudent(email) {
     const collection = await getMongoCollection(userStudent)
     const user = await collection.findOne({ email: email })
@@ -62,7 +80,7 @@ async function validateUser(email) {
         return userStudent
     }
 }
-
+*/
 module.exports = {
     authorize, 
     authorizeAdmin, 

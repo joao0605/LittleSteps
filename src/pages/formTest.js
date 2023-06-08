@@ -12,7 +12,8 @@ export default function formTest() {
     const [message, setMessage] = useState("Carregando informações")
     useEffect(() => {
         const logged = Boolean(localStorage.getItem('token'))
-        if (!logged) {
+        const userType = localStorage.getItem('userType')
+        if (!logged || userType !== "userstudents") {
             router.push('/login')
         }
     }, [])

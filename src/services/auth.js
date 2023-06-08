@@ -10,7 +10,7 @@ async function addUserAuth(data) {
 
 //Verificar se email e pass estão corretos
 async function checkUserPassword(email, password) {
-    console.log("imprimi algo aqui", email, password)
+    
     const user = await findUserAuthByEmail(email)
     return !!user && (password === user.password) 
 }

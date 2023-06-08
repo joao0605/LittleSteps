@@ -84,8 +84,8 @@ async function getDailyForm(req, res) {
 }
 
 async function getStudentUsersById(id) {
-    connectDB()
     try {
+        connectDB()
         const model = getMongooseUserStudentModel()
         const user = await model.findById({ _id: new ObjectId(id) }).exec();
         return user;
@@ -95,8 +95,8 @@ async function getStudentUsersById(id) {
 }
 
 async function updateStudentData(id) {
-    connectDB()
     try {
+        connectDB()
         const model = getMongooseUserStudentModel()
         const updatedUser = await model.findByIdAndUpdate({ _id: new ObjectId(id) }, req.body, {
             new: true,
