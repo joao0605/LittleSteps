@@ -61,38 +61,49 @@ async function getStudentUsers(req, res) {
 // Obtém o formulário do dia do aluno
 async function getDailyForm(req, res) {
     connectDB();
-        
+
     try {
         const student = getMongooseFormModel()
         const id = req.query.studentId
         const date = req.query.date
-       // console.log(newDate)
+        // console.log(newDate)
 
-       //const date = newDate.valueOf()
+        //const date = newDate.valueOf()
         console.log(date)
         console.log(id)
 
-        const findDaily = await student.find({date: date})
+        const findDaily = await student.find({ date: date })
 
-       
+
         console.log(findDaily)
-        
-        const daily =  findDaily.filter(ele => ele.studentId === id)
+
+        const daily = findDaily.filter(ele => ele.studentId === id)
         console.log(daily)
         res.status(200).json(daily)
     } catch (error) {
         res.status(500).json({ error: error.message });
     }
 }
- 
+
+async function getStudentUsersById(id) {
+    connectDB()
+    try {
+        const model = getMongooseUserStudentModel()
+        const user = await model.findById({ _id: new ObjectId(id) }).exec();
+        return user;
+    } catch (error) {
+        console.log(error)
+    }
+}
+
 async function updateStudentData(id) {
     connectDB()
     try {
         const model = getMongooseUserStudentModel()
         const updatedUser = await model.findByIdAndUpdate({ _id: new ObjectId(id) }, req.body, {
             new: true,
-          }).exec();
-    
+        }).exec();
+
         return updatedUser;
     } catch (error) {
         console.log(error)
@@ -102,4 +113,4 @@ async function updateStudentData(id) {
 
 
 
-export { newStudentUser, newStudentUsers, deleteStudentUsers, getStudentUsers, getDailyForm, updateStudentData }
+export { newStudentUser, newStudentUsers, deleteStudentUsers, getStudentUsers, getStudentUsersById, getDailyForm, updateStudentData }

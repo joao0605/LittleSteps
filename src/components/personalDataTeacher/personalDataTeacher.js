@@ -10,13 +10,7 @@ export default function PersonalDataTeacher(props) {
         phone: "999 999 999",
         address: "Rua das Felicidades"
     }
-    const professora = {
-        name: "Amanda Quaresma",
-        date: "28/10/2004",
-        phone: "999 999 999",
-        email: "aq_amanhecer@hotmail.com",
-        address: "Rua Lá Lá desse Lado"
-    }
+  
     const add = {
         addInfo: "Alérgica a crianças"
     }

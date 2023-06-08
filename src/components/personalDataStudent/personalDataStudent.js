@@ -3,7 +3,7 @@ import ResponsibleInfo from "./responsibleInfo"
 import AddInfo from "./addInfo"
 import styles from './StudentInfo.module.css'
 
-export default function PersonalDataStudent() {
+export default function PersonalDataStudent(props) {
 
     const estudante = {
         name: "Nelson Medina",
@@ -24,10 +24,10 @@ export default function PersonalDataStudent() {
     return (
         <div className={styles.studentAll}>
             <div className={styles.studentInfo}>
-                <StudentInfo name={estudante.name} birthday={estudante.date} />
+                <StudentInfo name={props.name} birthdate={props.birthdate} />
             </div>
             <div className={styles.responsibleInfo}>
-                <ResponsibleInfo name={responsavel.name} phoneNumber={responsavel.phone} email={responsavel.email} address={responsavel.address} />
+                <ResponsibleInfo mothersName={props.mothersName} phoneNumber={props.phoneNumber} email={props.email} address={props.address} />
             </div>
             <div className={styles.observacoesInfo}>
                 <AddInfo addInfo={add.addInfo}/>
