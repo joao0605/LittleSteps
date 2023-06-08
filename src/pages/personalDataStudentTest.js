@@ -44,6 +44,20 @@ export default function personalDataStudentTest() {
           // Lida com o erro, se necessário
         }
       }
+
+      useEffect(() => {
+        const userType = localStorage.getItem('userType')
+       
+        if(userType  === "userteachers"){
+
+            router.push("/personalDataTeacherTest")
+
+        } else if( userType !== "userstudents"){
+
+            router.push("/login")
+        }
+
+    }, [])
     
       fetchSession()
         .then(userId => {

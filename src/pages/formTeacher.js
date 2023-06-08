@@ -13,7 +13,7 @@ export default function formTest() {
     const data = new Date()
     const formatedDate = `${data.getFullYear()}-${data.getMonth()}-${data.getDate()}`
     const [formData, setFormData] = useState({
-       
+
         date: formatedDate,
         breakfast: "",
         nap: "",
@@ -22,14 +22,20 @@ export default function formTest() {
         poop: "",
         observations: "",
         teacherId: " ",
-        studentId: "647ec872b2375619cca31e98",
+        studentId: "647ec872b2375619cca31e97",
         courseId: " "
     });
 
     useEffect(() => {
-        const logged = Boolean(localStorage.getItem('token'))
-        if (!logged) {
-            router.push('/login')
+        const userType = localStorage.getItem('userType')
+
+        if (userType === "userstudents") {
+
+            router.push("/formTest")
+
+        } else if (userType !== "userteachers") {
+
+            router.push("/login")
         }
     }, [])
 
@@ -41,10 +47,10 @@ export default function formTest() {
             },
             body: JSON.stringify(formData)
         })
-        
+
 
         if (res.status === 200) {
-            
+
 
         } else {
             console.log()
@@ -57,40 +63,40 @@ export default function formTest() {
         setFormData(prevFormData => ({
             ...prevFormData,
             [e[0]]: e[1],
-          }));
-         
-          
-        };
+        }));
 
-        const handleSubmit = (e) => {
-            e.preventDefault()
-            console.log(JSON.stringify(formData))
-            saveForm()
-        }
-   /* useEffect(() => {
-    
-  async function fetchData() {
-      const res = await fetch('/api/manager/forms', {method: "GET"})
-      const data = await res.json();
-      setFormData(data);
-      
+
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        console.log(JSON.stringify(formData))
+        saveForm()
     }
+    /* useEffect(() => {
+     
+   async function fetchData() {
+       const res = await fetch('/api/manager/forms', {method: "GET"})
+       const data = await res.json();
+       setFormData(data);
+       
+     }
+ 
+     fetchData();
+     
+   }, []);*/
 
-    fetchData();
-    
-  }, []);*/
-    
     return (
         <div>
-            <TopBar/>
-            <NavButtonTeacher/>
+            <TopBar />
+            <NavButtonTeacher />
             <form onSubmit={(e) => handleSubmit(e)}>
 
-                <Form date={formatedDate} name={"fulana"} onChange={(e) => handleFormChange(e)}/>
+                <Form date={formatedDate} name={"fulana"} onChange={(e) => handleFormChange(e)} />
                 <Button>Submeter</Button>
             </form>
-           
-          
+
+
         </div>
     )
 }
