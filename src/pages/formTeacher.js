@@ -2,8 +2,10 @@ import Form from "@/components/form/form";
 import TopBar from "@/components/navButton/topBar";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+
 import NavButtonTeacher from "@/components/navButton/navButtonTeacher";
 import ButtonSubmit from "@/components/buttons/buttonSubmit";
+
 
 
 export default function formTest() {
@@ -87,11 +89,13 @@ export default function formTest() {
     return (
         <div>
             <TopBar />
+
             <NavButtonTeacher page="formTeacher"/>
             <form onSubmit={(e) => handleSubmit(e)}>
 
                 <Form date={formatedDate} name={"fulana"} onChange={(e) => handleFormChange(e)} />
                 <ButtonSubmit>Submeter</ButtonSubmit>
+
             </form>
 
 

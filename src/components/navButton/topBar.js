@@ -23,9 +23,11 @@ export default function TopBar() {
           src={logo} />
       </div>
 
+
       <div className={styles.logout}>
         <Image
           src={logout} onClick={handleLogout}/>
+
           
       </div>
       
