@@ -13,18 +13,18 @@ import 'react-toastify/dist/ReactToastify.css';
 export default function formTest() {
   const router = useRouter()
   const date = new Date()
-    let day = date.getDate()
-    let month = date.getMonth()+1
-    
-    if (day < 10){
-      day =`0${day}`
-    }
-    if (month < 10){
-      month =`0${month}`
-    }
-    const formatedDate = `${date.getFullYear()}-${month}-${day}`
-    const notify = () => toast("deu certo");
-    
+  let day = date.getDate()
+  let month = date.getMonth() + 1
+
+  if (day < 10) {
+    day = `0${day}`
+  }
+  if (month < 10) {
+    month = `0${month}`
+  }
+  const formatedDate = `${date.getFullYear()}-${month}-${day}`
+
+
   const studentId = router.query.studentId
   const [studentData, setStudentData] = useState(null)
   const [formData, setFormData] = useState({
@@ -44,7 +44,7 @@ export default function formTest() {
 
   useEffect(() => {
     const userType = localStorage.getItem('userType')
-   
+
 
     if (userType === "userstudents") {
 
@@ -58,18 +58,17 @@ export default function formTest() {
     }
   }, [])
 
- 
 
-  useEffect(()=> {
+
+
+
+  useEffect(() => {
     console.log(router)
 
     async function fetchData() {
 
-      if (typeof router.query.studentId !== 'undefined'){
+      if (typeof router.query.studentId !== 'undefined') {
 
-
-      
-        
         const res = await fetch(
           `/api/student/users/${studentId}`,
           { method: "GET" }
@@ -85,10 +84,29 @@ export default function formTest() {
       }
     }
 
-      fetchData()
+    fetchData()
 
-  
-}, [router.query.studentId])
+
+  }, [router.query.studentId])
+
+
+  /*async function verifyForm() {
+         
+         const res = await fetch(
+           `/api/manager/forms/${studentId}/${formatedDate}`,
+           { method: "GET" }
+         );
+         if (res.status != 200) {
+           setMessage("Formulário ainda não disponível, volte mais tarde!!");
+         } else {
+           const data = await res.json();
+           console.log("esse eh o de dados", data);
+           return data
+         }
+       }
+   
+       */
+
 
   async function saveForm() {
     const res = await fetch("/api/manager/forms", {
@@ -103,18 +121,15 @@ export default function formTest() {
     if (res.status === 200) {
       console.log("salvou o form")
 
-      
-      
     } else {
       console.log("não salvou")
-      const notify = () => toast("deu errado");
-      
+
     };
   }
 
 
- 
-  
+
+
 
 
 
@@ -123,40 +138,42 @@ export default function formTest() {
       ...prevFormData,
       [e[0]]: e[1],
     }));
-console.log(studentId)
+    console.log(studentId)
 
   };
 
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log(JSON.stringify(formData))
+
     saveForm()
   }
-  /* useEffect(() => {
-   
- async function fetchData() {
-     const res = await fetch('/api/manager/forms', {method: "GET"})
-     const data = await res.json();
-     setFormData(data);
+    /* useEffect(() => {
      
-   }
- 
-   fetchData();
+   async function fetchData() {
+       const res = await fetch('/api/manager/forms', {method: "GET"})
+       const data = await res.json();
+       setFormData(data);
+       
+     }
    
- }, []);*/
+     fetchData();
+     
+   }, []);*/
 
-  return (
-    <div>
-      <TopBar />
-      <NavButtonTeacher page="formTeacher" />
-      <form onSubmit={(e) => handleSubmit(e)}>
+    return (
+      <div>
+        <TopBar />
+        <NavButtonTeacher page="formTeacher" />
+        <form onSubmit={(e) => handleSubmit(e)}>
 
-        <Form date={formatedDate} name={studentData && studentData.name} onChange={(e) => handleFormChange(e)} />
-        <ButtonSubmit>Submeter</ButtonSubmit>
-        <ToastContainer/>
-      </form>
+          <Form date={formatedDate} name={studentData && studentData.name} onChange={(e) => handleFormChange(e)} />
+          <ButtonSubmit>Submeter</ButtonSubmit>
+          <ToastContainer />
+        </form>
 
 
-    </div>
-  )
-}
+      </div>
+    )
+  }
+

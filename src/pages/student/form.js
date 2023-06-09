@@ -26,7 +26,7 @@ export default function formTest() {
     const formatedDate = `${date.getFullYear()}-${month}-${day}`
     
     
-    const [message, setMessage] = useState("Carregando informações")
+    const [message, setMessage] = useState("Formulário ainda não disponível, volte mais tarde!!")
     useEffect(() => {
       const userType = localStorage.getItem('userType')
      
