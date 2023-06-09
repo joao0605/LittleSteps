@@ -48,7 +48,7 @@ export default function listStudents() {
 
     return (
         <div>
-            <TopBar />
+            <TopBar page='Teacher' />
             <NavButtonTeacher page="listStudents" />
 
             <div>

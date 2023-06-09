@@ -21,7 +21,7 @@ export function ItemForm({ name, registration, status, studentId }) {
     
 
     function verificaStatus(status) {
-        return status == 2 ? complete : status == 1 ? incomplete : notStart
+        return status == 1 ? complete : status == 0 ? notStart : notStart
     }
 
     return (

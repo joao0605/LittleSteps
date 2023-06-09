@@ -15,4 +15,3 @@ export default function CommentBox(props) {
         </div>
     )
 }
-/*max length 48*/
