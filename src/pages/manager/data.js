@@ -14,7 +14,7 @@ export default function personalDataTeacherTest() {
      
       if(userType  === "userstudents"){
 
-          router.push("/personalDataStudentTest")
+          router.push("/student/data")
 
       } else if( userType !== "userteachers"){
 

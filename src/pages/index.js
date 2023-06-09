@@ -64,7 +64,8 @@ export default function Home() {
   return (
 
     <div>
-      <TopBar />
+
+      { userType  !== "userteachers" ? <TopBar page="Teacher" /> : <TopBar />}
       { userType  !== "userteachers" ? <InicialPageStudent/> : <InicialPageTeacher/>}
 
     </div>

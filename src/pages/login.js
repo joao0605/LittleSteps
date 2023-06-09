@@ -37,15 +37,11 @@ export default function LoginPage() {
             const corpo = await res.json()
             localStorage.setItem("token", corpo.token)
             localStorage.setItem("userType", corpo.userType)
-            // setCookie('authorization', corpo)
-           if(corpo.userType  === "userteachers"){
+            // setCookie('authorization', corpo
 
-               router.push("/personalDataTeacherTest")
+               router.push("/")
 
-           } else if( corpo.userType === "userstudents"){
-
-               router.push("/personalDataStudentTest")
-           }
+           
 
         } else {
             notify
@@ -58,11 +54,11 @@ export default function LoginPage() {
        
         if(userType  === "userteachers"){
 
-            router.push("/personalDataTeacherTest")
+            router.push("/manager/data")
 
         } else if( userType === "userstudents"){
 
-            router.push("/personalDataStudentTest")
+            router.push("/student/data")
         }
 
     }, [])

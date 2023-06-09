@@ -1,7 +1,7 @@
 import TopBar from "@/components/navButton/topBar"
 import NavButtonTeacher from "@/components/navButton/navButtonTeacher"
 import List from "@/components/list/list"
-import styles from '../components/list/list.module.css'
+import styles from '../../components/list/list.module.css'
 import { useRouter } from "next/router"
 
 import { ItemStudents } from "@/components/list/itens"

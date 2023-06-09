@@ -14,7 +14,7 @@ export default function NavButtonTeacher(props) {
     return (
         <div className={styles.navButtons}>
 
-            <button onClick={() => router.push('/personalDataTeacherTest')} className={props.page == 'personalDataTeacherTest' ? styles.profile : styles.profileOpacity}>
+            <button onClick={() => router.push('/manager/data')} className={props.page == 'personalDataTeacherTest' ? styles.profile : styles.profileOpacity}>
                 <Image
                     src={profile}className={styles.icon} />
             </button>

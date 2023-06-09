@@ -16,12 +16,12 @@ export default function NavButtonStudent(props) {
     return (
         <div className={styles.navButtons}>
 
-            <button onClick={() => router.push('/personalDataStudentTest')} className={props.page == 'personalDataStudentTest' ? styles.profile : styles.profileOpacity}>
+            <button onClick={() => router.push('/student/data')} className={props.page == 'personalDataStudentTest' ? styles.profile : styles.profileOpacity}>
                 <Image
                     src={profile} className={styles.icon} />
             </button>
 
-            <button onClick={() => router.push('/formTest')} className={props.page == 'formTest' ? styles.report : styles.reportOpacity}>
+            <button onClick={() => router.push('/student/form')} className={props.page == 'formTest' ? styles.report : styles.reportOpacity}>
                 <Image
                     src={report} className={styles.icon} />
             </button>
