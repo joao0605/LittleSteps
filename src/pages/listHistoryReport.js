@@ -45,7 +45,7 @@ export default function listHistoryReport() {
 
     return (
         <div>
-            <TopBar />
+            <TopBar page='Teacher' />
             <NavButtonTeacher/>
             <List>
                 {itens.map(i => <ItemHistory onClick={() => router.push('/formTeacher')} name={i.name} date={i.date}/>)}

@@ -9,7 +9,6 @@ import logosecundario from '../../../public/novologomamae.png'
 
 
 
-
 export default function InicialPageTeacher() {
 
     const estudante = {

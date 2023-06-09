@@ -86,7 +86,7 @@ export default function formTest() {
 
     return (
         <div>
-            <TopBar />
+            <TopBar page='Teacher' />
             <NavButtonTeacher page="formTeacher"/>
             <form onSubmit={(e) => handleSubmit(e)}>
 
