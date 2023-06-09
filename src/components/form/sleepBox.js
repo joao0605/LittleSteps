@@ -13,13 +13,13 @@ export default function SleepBox(props) {
     return (
        
         <div className={styles.sleepbox}>
-           <div className={styles.iconline}> ~
+           <div className={styles.iconline}>
            <Image
             src={sleep}/>
             <p>Soneca</p>
-            <hr></hr> 
+            <hr className={styles.hrline} />
             </div>
-            <input type="range" max="5" name='nap' min="0" onChange={handleValue}/>
+            <input className={styles.actualslider} type="range" max="5" name='nap' min="0" onChange={handleValue}/>
         </div>
     )
 }

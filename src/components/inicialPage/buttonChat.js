@@ -10,7 +10,7 @@ const router = useRouter()
 
    return (
             <div className={styles.iconChat}>
-                <button onClick={() => router.push('/chatTest')}><Image src={chat} /></button>
+                <button onClick={() => router.push('/chatStudent')}><Image className= {styles.imgChat} src={chat} /></button>
             </div>
         
     )

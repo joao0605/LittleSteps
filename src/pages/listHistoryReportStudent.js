@@ -3,6 +3,7 @@ import List from "@/components/list/list"
 import { useRouter } from "next/router"
 import { ItemHistory } from "@/components/list/itens"
 import NavButtonTeacher from "@/components/navButton/navButtonTeacher"
+import NavButtonStudent from "@/components/navButton/navButtonStudent"
 
 
 export default function listHistoryReport() {
@@ -46,9 +47,9 @@ export default function listHistoryReport() {
     return (
         <div>
             <TopBar />
-            <NavButtonTeacher/>
+            <NavButtonStudent page="listHistoryReportStudent"/>
             <List>
-                {itens.map(i => <ItemHistory onClick={() => router.push('/formTeacher')} name={i.name} date={i.date}/>)}
+                {itens.map(i => <ItemHistory onClick={() => router.push('/formTest')} name={i.name} date={i.date}/>)}
             </List>
             
 

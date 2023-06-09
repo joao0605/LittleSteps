@@ -49,7 +49,7 @@ export default function listStudents() {
     return (
         <div>
             <TopBar />
-            <NavButtonTeacher />
+            <NavButtonTeacher page="listStudents" />
 
             <div>
             <List>

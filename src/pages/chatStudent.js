@@ -9,7 +9,7 @@ import NavButtonTeacher from "@/components/navButton/navButtonTeacher";
 //     }
 // }
 
-export default function ChatTest(props) {
+export default function ChatTest() {
 
     //aqui vamos verificar se o perfil é do tipo pai ou responsável e enviar a resposta como props, para modificar o formulario
     
@@ -18,7 +18,7 @@ export default function ChatTest(props) {
     return (
         <div>
             <TopBar />
-           <NavButtonTeacher page="chatTest"/>
+           <NavButtonStudent page="chatStudent" />
             <div>
                 <h1>Chat App</h1>
                 <Chat />

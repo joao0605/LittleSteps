@@ -10,7 +10,7 @@ const router = useRouter()
 
         return (
             <div className={styles.iconDailyReport}>
-                <button onClick={() => router.push('/formTest')}><Image src={report} /></button>
+                <button onClick={() => router.push('/formTest')}><Image className= {styles.imgReport} src={report} /></button>
             </div>
         )
     }

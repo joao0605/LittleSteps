@@ -46,9 +46,11 @@ async function deleteStudentUsers(req, res) {
 
 // Obtém todos os formulários
 async function getStudentUsers(req, res) {
+
     try {
         connectDB()
         const Model = getMongooseUserStudentModel()
+
 
         const users = await Model.find().exec()
 

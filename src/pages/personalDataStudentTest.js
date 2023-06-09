@@ -79,7 +79,7 @@ export default function personalDataStudentTest() {
     return (
       <div>
             <TopBar/>
-            <NavButtonStudent/>
+            <NavButtonStudent page="personalDataStudentTest"/>
           
            {!dados ?<p>Ainda sem dados para carregar por aqui!</p> : <PersonalDataStudent name={dados.name} birthdate={dados.birthdate} phoneNumber={dados.phoneNumber} email={dados.email} address={dados.address} mothersName={dados.mothersName}/>}
            
