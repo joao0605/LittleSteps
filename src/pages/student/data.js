@@ -1,19 +1,21 @@
 import NavButtonStudent from "@/components/navButton/navButtonStudent";
 import TopBar from "@/components/navButton/topBar";
 import PersonalDataStudent from "@/components/personalDataStudent/personalDataStudent";
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 export default function personalDataStudentTest() {
 
 
   const [dados, setDados] = useState(null);
+  const router = useRouter()
 
   useEffect(() => {
     const userType = localStorage.getItem('userType')
    
     if(userType  === "userteachers"){
 
-        router.push("/personalDataTeacherTest")
+        router.push("/manager/data")
 
     } else if( userType !== "userstudents"){
 

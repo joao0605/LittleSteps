@@ -19,7 +19,7 @@ export default function NavButtonTeacher(props) {
                     src={profile}className={styles.icon} />
             </button>
 
-            <button onClick={() => router.push('/manager/form/listForm')} className={props.page == 'formTeacher' ? styles.report : styles.reportOpacity}>
+            <button onClick={() => router.push('/manager/form/listForm')} className={props.page == 'listForm' ? styles.report : styles.reportOpacity}>
                 <Image
                     src={report}className={styles.icon} />
             </button>
@@ -28,7 +28,7 @@ export default function NavButtonTeacher(props) {
                 <Image src={chat}className={styles.icon} />
             </button>
 
-            <button onClick={() => router.push('/listStudents')} className={props.page == 'listStudents' ? styles.classe : styles.classeOpacity}>
+            <button onClick={() => router.push('/manager/listStudents')} className={props.page == 'listStudents' ? styles.classe : styles.classeOpacity}>
                 <Image src={classe}className={styles.icon} />
             </button>
 
