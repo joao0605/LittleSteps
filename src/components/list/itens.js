@@ -12,7 +12,13 @@ import { useRouter } from "next/router";
 // 2 status verde(completed)
 
 
-export function ItemForm({ name, registration, status, onClick }) {
+export function ItemForm({ name, registration, status, studentId }) {
+
+    
+    const router = useRouter()
+
+
+    
 
     function verificaStatus(status) {
         return status == 2 ? complete : status == 1 ? incomplete : notStart
@@ -20,7 +26,7 @@ export function ItemForm({ name, registration, status, onClick }) {
 
     return (
         <div>
-            <p onClick={onClick}>{name} {registration} </p>
+            <p style={{backgroundColor:"red"}} onClick={() => router.push(`/manager/form/${studentId}`)} >{name} {registration} </p>
             <Image
                 src={verificaStatus(status)} />
         </div>

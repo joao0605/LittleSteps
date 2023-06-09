@@ -1,24 +1,23 @@
-import { getCookie } from 'cookies-next'
-import { verifica } from '../services/user'
+
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/router'
+import InicialPageStudent from "@/components/inicialPage/inicialPageStudent"
+import InicialPageTeacher from "@/components/inicialPage/inicialPageTeacher"
+import TopBar from "@/components/navButton/topBar"
 
 export default function Home() {
 
+  const [userType, setUserType] = useState()
   const router = useRouter();
 
-  useEffect(() => {
-    const userType = localStorage.getItem('userType')
+   useEffect(() => {
+
+    const firstUserType = localStorage.getItem('userType')
+    setUserType(firstUserType)
    
-    if(userType  === "userteachers"){
+    firstUserType  !== "userteachers" && firstUserType  !== "userstudents" && router.push("/login")
 
-        router.push("/personalDataTeacherTest")
-
-    } else if( userType === "userstudents"){
-
-        router.push("/personalDataStudentTest")
-    }
-
+    
 }, [])
   
  /* const [loggedIn, setLoggedIn] = useState(false)
@@ -65,8 +64,8 @@ export default function Home() {
   return (
 
     <div>
-      { <p>Perfil do usuário</p>}
-      
+      <TopBar />
+      { userType  !== "userteachers" ? <InicialPageStudent/> : <InicialPageTeacher/>}
 
     </div>
 

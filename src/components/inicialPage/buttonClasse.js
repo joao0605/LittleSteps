@@ -8,7 +8,7 @@ export default function ButtonClasse() {
 const router = useRouter()
     return (
         <div className={styles.iconclasse}>
-            <button onClick={() => router.push('/')}><Image className= {styles.imgClasse} src={classe}/></button>
+            <button onClick={() => router.push('/listStudents')}><Image className= {styles.imgClasse} src={classe}/></button>
         </div>
     )
 }

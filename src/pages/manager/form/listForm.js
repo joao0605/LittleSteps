@@ -34,7 +34,6 @@ const [forms, setForms] = useState(null)
 
     
 
-       const router = useRouter()
 //onClick tem que chamar uma function
 
 // dentro da Div junto com LIST colocar a imagem do status
@@ -43,9 +42,9 @@ const [forms, setForms] = useState(null)
         <div>
             <TopBar />
           <NavButtonTeacher/>
-          <div>
-            <List>
-                {forms && forms.map(i => <ItemForm onClick={() => router.push('/formTest')} status={i.status} name={i.name} registration={i.registration} />)}
+          <div >
+            <List >
+                {forms && forms.map(i => <ItemForm  status={i.status} name={i.name} registration={i.registration} studentId={i._id}/>)}
             </List>
             </div>
 
