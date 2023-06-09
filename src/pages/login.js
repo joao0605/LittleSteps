@@ -1,8 +1,12 @@
-import Link from 'next/link'
 
 import { useRouter } from 'next/router'
 import { useState, useEffect} from 'react'
 import styles from '../styles/login.module.css'
+
+import React from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 
 import Logo from '../components/logoTitle/logoSecundario'
@@ -16,6 +20,8 @@ export default function LoginPage() {
     const router = useRouter()
     const [state, setState] = useState({ password: "", email: "" })
     const [error, setError] = useState('')
+
+    const notify = () => toast("deu errado");
     
     async function login() {
         const res = await fetch("/api/auth/login", {
@@ -42,6 +48,7 @@ export default function LoginPage() {
            }
 
         } else {
+            notify
             setError("Usuário ou senha incorretos")
         };
     }
@@ -130,6 +137,8 @@ return (
 
                 </form>
             </LoginCard>
+            
+        <ToastContainer />
 
             <Title />
 

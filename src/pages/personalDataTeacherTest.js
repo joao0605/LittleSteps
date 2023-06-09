@@ -1,12 +1,27 @@
 import NavButtonTeacher from "@/components/navButton/navButtonTeacher"
 import TopBar from "@/components/navButton/topBar"
 import PersonalDataTeacher from "@/components/personalDataTeacher/personalDataTeacher"
+import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 
 
 export default function personalDataTeacherTest() {
+  const router = useRouter()
+  const [dados, setDados] = useState(null);
 
-    const [dados, setDados] = useState(null);
+    useEffect(() => {
+      const userType = localStorage.getItem('userType')
+     
+      if(userType  === "userstudents"){
+
+          router.push("/personalDataStudentTest")
+
+      } else if( userType !== "userteachers"){
+
+          router.push("/login")
+      }
+
+  }, [])
 
     useEffect(() => {
         async function fetchSession() {
@@ -58,19 +73,7 @@ export default function personalDataTeacherTest() {
           });
       }, []);
 
-      useEffect(() => {
-        const userType = localStorage.getItem('userType')
-       
-        if(userType  === "userstudents"){
-
-            router.push("/personalDataStudentTest")
-
-        } else if( userType !== "userteachers"){
-
-            router.push("/login")
-        }
-
-    }, [])
+      
  
     return (
         <div>
