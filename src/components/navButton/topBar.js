@@ -7,7 +7,6 @@ import { useRouter } from "next/router"
 
 
 export default function TopBar() {
-
   const router = useRouter()
   const handleLogout = () => {
     localStorage.removeItem("token");
