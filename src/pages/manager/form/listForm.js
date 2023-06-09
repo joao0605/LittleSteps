@@ -4,53 +4,51 @@ import NavButtonTeacher from "@/components/navButton/navButtonTeacher"
 import { Alerta, ItemForm } from "@/components/list/itens"
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
-
+import styles from '../../../components/list/list.module.css'
 
 
 
 export default function listForm() {
 
-const [forms, setForms] = useState(null)
+  const [forms, setForms] = useState(null)
 
-    useEffect(()=> {
-        async function fetchData() {
-            
-            const res = await fetch(
-              `/api/manager/studentUser`,
-              { method: "GET" }
-            );
-            if (res.status != 200) {
-              setMessage("Formulários ainda não disponíveis");
-            } else {
-              const data = await res.json();
-              console.log("esse eh o de dados", data);
-              setForms(data);
-            }
-          }
+  useEffect(() => {
+    async function fetchData() {
 
-          fetchData()
-    }, [])
+      const res = await fetch(
+        `/api/manager/studentUser`,
+        { method: "GET" }
+      );
+      if (res.status != 200) {
+        setMessage("Formulários ainda não disponíveis");
+      } else {
+        const data = await res.json();
+        console.log("esse eh o de dados", data);
+        setForms(data);
+      }
+    }
+
+    fetchData()
+  }, [])
 
 
-    
 
-//onClick tem que chamar uma function
 
-// dentro da Div junto com LIST colocar a imagem do status
+  //onClick tem que chamar uma function
 
-    return (
-        <div>
-            <TopBar page='Teacher'/>
-          <NavButtonTeacher/>
-          <div >
-            <List >
-                {forms && forms.map(i => <ItemForm  status={i.status} name={i.name} registration={i.registration} studentId={i._id}/>)}
-            </List>
-            </div>
+  // dentro da Div junto com LIST colocar a imagem do status
 
-            <button onClick={Alerta} > Submeter</button>
+  return (
+    <div>
+      <TopBar page='Teacher' />
+      <NavButtonTeacher />
+      <div className={styles.container} >
+        <List >
+          {forms && forms.map(i => <ItemForm status={i.status} name={i.name} registration={i.registration} studentId={i._id} />)}
+        </List>
+      </div>
 
-        </div>
-    )
+    </div>
+  )
 }
 

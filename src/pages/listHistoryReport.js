@@ -47,10 +47,11 @@ export default function listHistoryReport() {
         <div>
             <TopBar page='Teacher' />
             <NavButtonTeacher/>
+            <div className={styles.container}>
             <List>
                 {itens.map(i => <ItemHistory onClick={() => router.push('/formTeacher')} name={i.name} date={i.date}/>)}
             </List>
-            
+            </div>
 
         </div>
     )

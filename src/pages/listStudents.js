@@ -1,7 +1,7 @@
 import TopBar from "@/components/navButton/topBar"
 import NavButtonTeacher from "@/components/navButton/navButtonTeacher"
 import List from "@/components/list/list"
-
+import styles from '../components/list/list.module.css'
 import { useRouter } from "next/router"
 
 import { ItemStudents } from "@/components/list/itens"
@@ -51,9 +51,9 @@ export default function listStudents() {
             <TopBar page='Teacher' />
             <NavButtonTeacher page="listStudents" />
 
-            <div>
-            <List>
-                {itens.map(i => <ItemStudents onClick={() => router.push('/personalDataStudentTest')} name={i.name} registration={i.registration} />)}
+            <div className={styles.container}>
+            <List >
+                {itens.map(i => <ItemStudents name={i.name} registration={i.registration} />)}
             </List>
             </div>
 

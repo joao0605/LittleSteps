@@ -2,6 +2,7 @@ import NavButtonStudent from "@/components/navButton/navButtonStudent";
 import TopBar from "@/components/navButton/topBar";
 import Chat from "@/components/chat/chat";
 import NavButtonTeacher from "@/components/navButton/navButtonTeacher";
+import styles from '../components/chat/chat.module.css'
 
 // function verificaNav(){
 //     if(page="formTeacher" || page == 'listStudents' || page == 'personalDataTeacherTest'){
@@ -16,11 +17,11 @@ export default function ChatTest(props) {
         
     
     return (
-        <div>
+        <div className={styles.body}>
             <TopBar page='Teacher' />
            <NavButtonTeacher page="chatTest"/>
-            <div>
-                <h1>Chat App</h1>
+            <div className={styles.chatBody}>
+                <h1 className={styles.chatTitle}>Chat App</h1>
                 <Chat />
             </div>
         </div>

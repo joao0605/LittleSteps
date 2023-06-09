@@ -3,8 +3,9 @@ import Image from "next/image";
 import notStart from '../../../public/statusNotStart.png'
 import complete from '../../../public/statusComplete.png'
 import incomplete from '../../../public/statusIncomplete.png'
-import calendario from '../../../public/calendario.png'
+import grafico from '../../../public/grafico.png'
 import { useRouter } from "next/router";
+import styles from './list.module.css'
 
 // pensar no status com um numero de 0 ate 2
 //0 status vermelho(sem nenhuma informação)
@@ -25,10 +26,10 @@ export function ItemForm({ name, registration, status, studentId }) {
     }
 
     return (
-        <div>
-            <p style={{backgroundColor:"red"}} onClick={() => router.push(`/manager/form/${studentId}`)} >{name} {registration} </p>
+        <div className={styles.containerButton}>
+            <p className={styles.title} onClick={() => router.push(`/manager/form/${studentId}`)} >{name} {registration} </p>
             <Image
-                src={verificaStatus(status)} />
+               className={styles.icon} src={verificaStatus(status)} width={20} />
         </div>
     )
 }
@@ -41,10 +42,10 @@ export function ItemStudents({ name, registration, onClick }) {
     const router = useRouter()
 
     return (
-        <div>
-            <p onClick={onClick}>{name} {registration} </p>
+        <div className={styles.containerButton}>
+            <p className={styles.title} onClick={onClick}>{name} {registration} </p>
             <Image onClick={() => router.push('/listHistoryReport')}
-            src={calendario}/>
+            src={grafico} width={25} className={styles.calendar}/>
         </div>
     )
 }
