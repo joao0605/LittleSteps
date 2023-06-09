@@ -6,19 +6,20 @@ import styles from './navBar.module.css'
 import { useRouter } from "next/router"
 
 
-export default function TopBar() {
+export default function TopBar(props) {
   const router = useRouter()
   const handleLogout = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("userType");
     router.push("/login");
   };
+  const rota = props.page == 'Teacher' ? '/inicialPageTeacherTest' : '/inicialPageStudentTest'
 
   return (
     <div className={styles.navbar}>
 
       <div className={styles.iconeProfile}>
-        <Image
+        <Image onClick={() => router.push(rota)}
           src={logo} />
       </div>
 

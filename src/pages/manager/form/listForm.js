@@ -40,7 +40,7 @@ const [forms, setForms] = useState(null)
 
     return (
         <div>
-            <TopBar />
+            <TopBar page='Teacher'/>
           <NavButtonTeacher/>
           <div >
             <List >
