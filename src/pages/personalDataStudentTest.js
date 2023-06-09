@@ -9,6 +9,20 @@ export default function personalDataStudentTest() {
   const [dados, setDados] = useState(null);
 
   useEffect(() => {
+    const userType = localStorage.getItem('userType')
+   
+    if(userType  === "userteachers"){
+
+        router.push("/personalDataTeacherTest")
+
+    } else if( userType !== "userstudents"){
+
+        router.push("/login")
+    }
+
+}, [])
+
+  useEffect(() => {
       async function fetchSession() {
         try {
           const res = await fetch('/api/auth/validate', {
@@ -45,19 +59,7 @@ export default function personalDataStudentTest() {
         }
       }
 
-      useEffect(() => {
-        const userType = localStorage.getItem('userType')
-       
-        if(userType  === "userteachers"){
-
-            router.push("/personalDataTeacherTest")
-
-        } else if( userType !== "userstudents"){
-
-            router.push("/login")
-        }
-
-    }, [])
+      
     
       fetchSession()
         .then(userId => {
