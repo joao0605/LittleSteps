@@ -30,34 +30,7 @@ export default function personalDataStudentTest() {
         }
       }
     
-      async function fetchData(userId) {
-        try {
-          const res = await fetch(`/api/student/users/${userId}`, { method: "GET" });
-          if (!res.ok) {
-            throw new Error("Failed to fetch user data");
-          }
-          const data = await res.json();
-          setDados(data);
-          
-        } catch (error) {
-          console.error(error);
-          // Lida com o erro, se necessário
-        }
-      }
-
-      useEffect(() => {
-        const userType = localStorage.getItem('userType')
-       
-        if(userType  === "userteachers"){
-
-            router.push("/personalDataTeacherTest")
-
-        } else if( userType !== "userstudents"){
-
-            router.push("/login")
-        }
-
-    }, [])
+      
     
       fetchSession()
         .then(userId => {
@@ -72,6 +45,36 @@ export default function personalDataStudentTest() {
           // Lida com o erro, se necessário
         });
     }, []);
+
+
+    async function fetchData(userId) {
+      try {
+        const res = await fetch(`/api/student/users/${userId}`, { method: "GET" });
+        if (!res.ok) {
+          throw new Error("Failed to fetch user data");
+        }
+        const data = await res.json();
+        setDados(data);
+        
+      } catch (error) {
+        console.error(error);
+        // Lida com o erro, se necessário
+      }
+    }
+
+    useEffect(() => {
+      const userType = localStorage.getItem('userType')
+     
+      if(userType  === "userteachers"){
+
+          router.push("/personalDataTeacherTest")
+
+      } else if( userType !== "userstudents"){
+
+          router.push("/login")
+      }
+
+  }, [])
     
     
 

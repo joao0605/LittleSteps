@@ -5,7 +5,7 @@ import ButtonClasse from "./buttonClasse"
 import styles from "./buttonInicialPage.module.css"
 import Image from "next/image"
 import logosecundario from '../../../public/novologomamae.png'
-import Header from "./header"
+
 
 
 

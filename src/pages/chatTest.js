@@ -17,7 +17,7 @@ export default function ChatTest(props) {
     
     return (
         <div>
-            <TopBar />
+            <TopBar page='Teacher' />
            <NavButtonTeacher page="chatTest"/>
             <div>
                 <h1>Chat App</h1>
