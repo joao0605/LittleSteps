@@ -10,6 +10,14 @@ import { ItemStudents } from "@/components/list/itens"
 
 export default function listStudents() {
 
+    function handleClick(){
+
+        router.push("/manager/charTest")
+
+    }
+
+    
+    const router = useRouter()
     const itens =
         [{
             name: "Nelson Medina",
@@ -37,7 +45,6 @@ export default function listStudents() {
         },
     ]
 
-    const router = useRouter()
 //onClick tem que chamar uma function
 
 
@@ -53,7 +60,7 @@ export default function listStudents() {
 
             <div className={styles.container}>
             <List >
-                {itens.map(i => <ItemStudents name={i.name} registration={i.registration} />)}
+                {itens.map(i => <ItemStudents onClick={handleClick} name={i.name} registration={i.registration} />)}
             </List>
             </div>
 
