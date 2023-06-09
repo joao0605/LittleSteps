@@ -10,7 +10,7 @@ export default function ButtonRecord() {
 
    return (
             <div className={styles.iconrecord}>
-                <button onClick={() => router.push('/listHistoryReportStudent')}><Image className= {styles.imgRecord} src={grafico} /></button>
+                <button onClick={() => router.push('/student/chartStudent')}><Image className= {styles.imgRecord} src={grafico} /></button>
             </div>
         
     )

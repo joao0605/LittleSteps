@@ -19,7 +19,7 @@ export default function ChartTest(props) {
     return (
         <div>
             <TopBar />
-            <NavButtonTeacher page="listStudents" />
+            <NavButtonStudent page="listHistoryReportStudent" />
             <div>
                 <h1 className={styles.chartText}>Gráfico do Aluno</h1>
                 <div className={styles.chart}>

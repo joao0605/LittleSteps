@@ -41,7 +41,7 @@ export default function listForm() {
   return (
     <div>
       <TopBar page='Teacher' />
-      <NavButtonTeacher />
+      <NavButtonTeacher page='listForm' />
       <div className={styles.container} >
         <List >
           {forms && forms.map(i => <ItemForm status={i.status} name={i.name} registration={i.registration} studentId={i._id} />)}

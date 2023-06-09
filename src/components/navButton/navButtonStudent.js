@@ -30,7 +30,7 @@ export default function NavButtonStudent(props) {
                 <Image src={chat} className={styles.icon} />
             </button>
 
-            <button onClick={() => router.push('/listHistoryReportStudent')} className={props.page == 'listHistoryReportStudent' ? styles.record : styles.recordOpacity}>
+            <button onClick={() => router.push('/student/chartStudent')} className={props.page == 'listHistoryReportStudent' ? styles.record : styles.recordOpacity}>
                 <Image src={grafico} className={styles.icon} />
             </button>
 

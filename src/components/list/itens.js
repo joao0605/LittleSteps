@@ -41,10 +41,16 @@ export function ItemForm({ name, registration, status, studentId }) {
 export function ItemStudents({ name, registration, onClick }) {
     const router = useRouter()
 
+    function handleClick(){
+
+        router.push("/manager/charTest")
+
+    }
+
     return (
         <div className={styles.containerButton}>
             <p className={styles.title} onClick={onClick}>{name} {registration} </p>
-            <Image onClick={() => router.push('/listHistoryReport')}
+            <Image onClick={handleClick}
             src={grafico} width={25} className={styles.calendar}/>
         </div>
     )
