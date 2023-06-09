@@ -2,7 +2,7 @@ import Image from 'next/image'
 import profile from '../../../public/profile.png'
 import report from '../../../public/report.png'
 import chat from '../../../public/chat.png'
-import record from '../../../public/record.png'
+import grafico from '../../../public/grafico.png'
 import styles from './navBar.module.css'
 import { useRouter } from "next/router"
 
@@ -31,7 +31,7 @@ export default function NavButtonStudent(props) {
             </button>
 
             <button onClick={() => router.push('/listHistoryReportStudent')} className={props.page == 'listHistoryReportStudent' ? styles.record : styles.recordOpacity}>
-                <Image src={record} className={styles.icon} />
+                <Image src={grafico} className={styles.icon} />
             </button>
 
         </div>)
