@@ -13,7 +13,7 @@ export default function TopBar(props) {
     localStorage.removeItem("userType");
     router.push("/login");
   };
-  const rota = props.page == 'Teacher' ? '/inicialPageTeacherTest' : '/inicialPageStudentTest'
+  const rota = props.page == 'Teacher' ? '/manager/data' : '/student/data'
 
   return (
     <div className={styles.navbar}>

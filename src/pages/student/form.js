@@ -9,7 +9,24 @@ import { useEffect, useState } from "react";
 export default function formTest() {
     const router = useRouter()
     
-    const [message, setMessage] = useState("Carregando informações")
+    
+    const [dadosForm, setDadosForm] = useState(null);
+    const [studentId, setStudentId] = useState(null);
+    const [studentData, setStudentData] = useState()
+    const date = new Date()
+    let day = date.getDate()
+    let month = date.getMonth()+1
+    
+    if (day < 10){
+      day =`0${day}`
+    }
+    if (month < 10){
+      month =`0${month}`
+    }
+    const formatedDate = `${date.getFullYear()}-${month}-${day}`
+    
+    
+    const [message, setMessage] = useState("Formulário ainda não disponível, volte mais tarde!!")
     useEffect(() => {
       const userType = localStorage.getItem('userType')
      
@@ -23,22 +40,7 @@ export default function formTest() {
       }
 
   }, [])
-
-    const [dadosForm, setDadosForm] = useState(null);
-    const date = new Date()
-    let day = date.getDate()
-    let month = date.getMonth()+1
-
-    if (day < 10){
-      day =`0${day}`
-    }
-    if (month < 10){
-      month =`0${month}`
-    }
-    const formatedDate = `${date.getFullYear()}-${month}-${day}`
-
-
-
+    
     useEffect(() => {
       async function fetchSession() {
         try {
@@ -53,7 +55,7 @@ export default function formTest() {
             throw new Error("Failed to validate session");
           }
           const data = await res.json();
-          console.log(data.session.userId);
+          setStudentId(data.session.userId);
           
           return data.session.userId;
         } catch (error) {
@@ -82,6 +84,33 @@ export default function formTest() {
       fetchData();
     }, []);
 
+
+    useEffect(()=> {
+      console.log(router)
+  
+      async function fetchData() {
+  
+        if (studentId !== 'undefined'){
+  
+          const res = await fetch(
+            `/api/student/users/${studentId}`,
+            { method: "GET" }
+          );
+          if (res.status != 200) {
+            
+          } else {
+            const data = await res.json();
+            console.log(data)
+            setStudentData(data);
+          }
+        }
+      }
+  
+        fetchData()
+  
+    
+  }, [studentId])
+
     return (
         <div>
             <TopBar/>
@@ -89,7 +118,7 @@ export default function formTest() {
             
         {!dadosForm ? <p>{message}</p> :   <Form
           key={dadosForm.studentId} // Adicione uma chave única para cada elemento gerado
-          name={dadosForm.studentId}
+          name={studentData && studentData.name}
           breakfast={dadosForm.breakfast}
           lunch={dadosForm.lunch}
           pee={dadosForm.pee}

@@ -1,3 +1,6 @@
+import styles from '../chat/chat.module.css'
+
+
 import React, { useState } from 'react';
 
 export default function Chat(){
@@ -19,11 +22,13 @@ export default function Chat(){
 
   return (
     <div>
-      <h1>Chat</h1>
+      <h1 className={styles.chatSubTitle}></h1>
       <div className="message-container">
         {messages.map((message, index) => (
+            <div className={styles.messageBox}>
           <div key={index} className="message">
             {message}
+          </div>
           </div>
         ))}
       </div>
@@ -33,8 +38,9 @@ export default function Chat(){
           value={inputValue}
           onChange={handleInputChange}
           placeholder="Type your message..."
+          className={styles.messageWrite}
         />
-        <button type="submit">Send</button>
+        <button type="submit" className={styles.messageSend}>Send</button>
       </form>
     </div>
   );

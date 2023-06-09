@@ -1,6 +1,7 @@
 import NavButtonStudent from "@/components/navButton/navButtonStudent";
 import TopBar from "@/components/navButton/topBar";
 import Chat from "@/components/chat/chat";
+import styles from '../components/chat/chat.module.css'
 
 
 // function verificaNav(){
@@ -19,8 +20,8 @@ export default function ChatTest() {
         <div>
             <TopBar />
            <NavButtonStudent page="chatStudent" />
-            <div>
-                <h1>Chat App</h1>
+            <div className={styles.chatBody}>
+                <h1 className={styles.chatTitle}>Chat App</h1>
                 <Chat />
             </div>
         </div>

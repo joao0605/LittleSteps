@@ -1,8 +1,12 @@
-import Link from 'next/link'
 
 import { useRouter } from 'next/router'
 import { useState, useEffect} from 'react'
 import styles from '../styles/login.module.css'
+
+import React from 'react';
+import { ToastContainer, toast } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 
 import Logo from '../components/logoTitle/logoSecundario'
@@ -16,6 +20,8 @@ export default function LoginPage() {
     const router = useRouter()
     const [state, setState] = useState({ password: "", email: "" })
     const [error, setError] = useState('')
+
+    const notify = () => toast("deu errado");
     
     async function login() {
         const res = await fetch("/api/auth/login", {
@@ -31,17 +37,14 @@ export default function LoginPage() {
             const corpo = await res.json()
             localStorage.setItem("token", corpo.token)
             localStorage.setItem("userType", corpo.userType)
-            // setCookie('authorization', corpo)
-           if(corpo.userType  === "userteachers"){
+            // setCookie('authorization', corpo
 
-               router.push("/personalDataTeacherTest")
+               router.push("/")
 
-           } else if( corpo.userType === "userstudents"){
-
-               router.push("/personalDataStudentTest")
-           }
+           
 
         } else {
+            notify
             setError("Usuário ou senha incorretos")
         };
     }
@@ -51,11 +54,11 @@ export default function LoginPage() {
        
         if(userType  === "userteachers"){
 
-            router.push("/personalDataTeacherTest")
+            router.push("/manager/data")
 
         } else if( userType === "userstudents"){
 
-            router.push("/personalDataStudentTest")
+            router.push("/student/data")
         }
 
     }, [])
@@ -130,6 +133,8 @@ return (
 
                 </form>
             </LoginCard>
+            
+        <ToastContainer />
 
             <Title />
 
