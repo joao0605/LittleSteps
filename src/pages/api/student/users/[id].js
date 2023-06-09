@@ -9,7 +9,7 @@ export default async function handler(req, res) {
     if (req.method === "GET") {
         const { id } = req.query
         if (!ObjectId.isValid(id)) {
-            return res.sendStatus(418)
+            return res.status(418).json({ error: 'id não válido' });
         }
         const user = await getStudentUsersById(id)
         if (!user) {

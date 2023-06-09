@@ -19,7 +19,7 @@ export default function NavButtonTeacher(props) {
                     src={profile}className={styles.icon} />
             </button>
 
-            <button onClick={() => router.push('/formTeacher')} className={props.page == 'formTeacher' ? styles.report : styles.reportOpacity}>
+            <button onClick={() => router.push('/manager/form/listForm')} className={props.page == 'formTeacher' ? styles.report : styles.reportOpacity}>
                 <Image
                     src={report}className={styles.icon} />
             </button>
